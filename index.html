@@ -6,12 +6,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/main.css">
     <script defer type="text/javascript" src="./js/main.js"></script>
-    <title>Document</title>
+    <title>Farm Idle</title>
 </head>
 
 <body>
+    <div class="flex-all">
+        <aside>
+            <strong>Farm Idle</strong>
+            <ul>
+                <li><a href="#farm" id="tab-farm">
+                        <img src="./img/svg/building-cottage.svg" alt="Farm Icon">
+                        Farm
+                    </a>
+                </li>
 
+                <li><a href="#process" id="tab-process">
+                        <img src="./img/svg/settings.svg" alt="Farm Icon">
+                        Verarbeitung
+                    </a>
+                </li>
 
+                <li><a href="#markt" id="tab-markt">
+                        <img src="./img/svg/building-store.svg" alt="Farm Icon">
+                        Markt
+                    </a>
+                </li>
+
+                <li><a href="#inventory" id="tab-inventory">
+                        <img src="./img/svg/building-warehouse.svg" alt="Farm Icon">
+                        Inventory
+                    </a>
+                </li>
+
+            </ul>
+        </aside>
+
+        <div class="content">
+            <header>
+                <div class="hud">
+                    <span>Gold: <b id="hud-gold">0</b></span>
+                    <span>Inventar: <b id="hud-inventory">0</b></span>
+                </div>
+            </header>
+
+            <main>
+
+                <section id="tab-farm">
+                    <nav class="toolbar-farm">
+
+                        <button type="button">
+                            <img src="./img/Crops/Farming-Wheat.png" alt="wheat Crop">
+                            <b>Wheat</b>
+                        </button>
+
+                        <button type="button">
+                            <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn Crop">
+                            <b>Wheat</b>
+                        </button>
+
+                    </nav>
+
+                    <div class="field-flex">
+
+                        <article class="field-nr">
+                            <h3>Field #1</h3>
+                            <p>Status</p>
+                            <div class="field-info">
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            </div>
+                            <div class="stat-row">Statrow </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="field-action">Saen</button>
+                        </article>
+
+                        <article class="field-nr">
+                            <h3>Field #1</h3>
+                            <p>Status</p>
+                            <div class="field-info">
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            </div>
+                            <div class="stat-row">Statrow </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="field-action">Saen</button>
+                        </article>
+
+                        <article class="field-nr">
+                            <h3>Field #1</h3>
+                            <p>Status</p>
+                            <div class="field-info">
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            </div>
+                            <div class="stat-row">Statrow </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="field-action">Saen</button>
+                        </article>
+
+                        <article class="field-nr">
+                            <h3>Field #1</h3>
+                            <p>Status</p>
+                            <div class="field-info">
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            </div>
+                            <div class="stat-row">Statrow </div>
+                            <div class="progress-bar"></div>
+                            <button id="field-action">Saen</button>
+                        </article>
+
+                        <article class="field-nr">
+                            <h3>Field #1</h3>
+                            <p>Status</p>
+                            <div class="field-info">
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            </div>
+                            <div class="stat-row">Statrow </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="field-action">Saen</button>
+                        </article>
+
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
 </body>
 
 </html>

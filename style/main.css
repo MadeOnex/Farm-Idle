@@ -3,3 +3,232 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --bg-page: #f9fafb;
+    --bg-card: #ffffff;
+    --bg-toolbar: #f1f5f9;
+
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 12px rgba(0, 0, 0, .06);
+
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-light: #e7f0ff;
+
+    --ok: #16a34a;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+
+    --radius: 12px;
+    --space-1: .5rem;
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.flex-all {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+main {
+    flex: 1;
+    overflow: auto;
+    background: var(--bg-page);
+}
+
+aside {
+    background: var(--bg-toolbar);
+    border-right: 2px solid var(--border-color);
+    padding: 1rem;
+    width: 240px;
+    flex: 0 0 240px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+aside strong {
+    font-size: 1.2rem;
+    display: block;
+}
+
+aside ul {
+    list-style: none;
+    margin-top: var(--space-3);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+aside a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: .6rem var(--space-2);
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius);
+}
+
+aside a:hover {
+    background: var(--accent-light);
+    color: var(--accent-hover);
+}
+
+aside a img {
+    height: 20px;
+}
+
+header {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-toolbar);
+
+}
+
+.hud {
+    display: flex;
+    gap: 2rem;
+    font-weight: 600;
+}
+
+main section {
+    display: block;
+    padding: var(--space-4)
+}
+
+.toolbar-farm {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.toolbar-farm button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: .55rem var(--space-3);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.toolbar-farm button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.toolbar-farm button.active,
+.toolbar-farm button.active:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+main section img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.field-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+
+
+article {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    box-shadow: var(--shadow);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: box-shadow .15s, transform .15s, border-color .15s;
+
+}
+
+article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+}
+
+article h3 {
+    font-size: 1.05rem;
+}
+
+article p,
+.stat-row {
+    color: var(--text-muted);
+}
+
+.progress-bar {
+    height: 10px;
+    border-radius: var(--radius);
+    background: var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 40%;
+    /* später dynamisch per JS */
+    background: var(--accent);
+}
+
+article button {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: var(--radius);
+    padding: .45rem .9rem;
+    font-weight: 600;
+}
+
+article button:hover {
+    background: var(--accent-hover);
+}
+
+.field-info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.field-info img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
