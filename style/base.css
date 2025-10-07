@@ -120,6 +120,6 @@ main section {
     margin-bottom: var(--space-4);
 }
 
-.is-hidden {
+main > section {
     display: none;
 }

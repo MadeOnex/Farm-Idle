@@ -12,7 +12,7 @@ function toggleButton() {
   }
 }
 
-// Tab Switch
+// Tab Switch blendet alle aus und dann einblenden
 function toogleTabs() {
   const tabs = document.querySelectorAll("main > section");
   const nav = document.querySelectorAll("aside a");
@@ -30,5 +30,13 @@ function toogleTabs() {
       document.getElementById(tabId).style.display = "block";
     });
   }
+
+  for (let j = 0; j > tabs.length; j++) {
+    tabjs[j].style.display = "none";
+  }
   document.getElementById("tab-farm").style.display = "block";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  toggleTabs();
+});
