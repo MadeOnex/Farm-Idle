@@ -1,0 +1,114 @@
+.toolbar-farm {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.toolbar-farm button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: .55rem var(--space-3);
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.toolbar-farm button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.toolbar-farm button.active,
+.toolbar-farm button.active:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+main section img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.field-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+article, .card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    box-shadow: var(--shadow);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: box-shadow .15s, transform .15s, border-color .15s;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: var(--card-min);
+    min-width: var(--card-min);
+    max-width: var(--card-max);
+}
+
+article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+}
+
+article h3 {
+    font-size: 1.05rem;
+}
+
+article p,
+.stat-row {
+    color: var(--text-muted);
+}
+
+.progress-bar {
+    height: 10px;
+    border-radius: var(--radius);
+    background: var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 40%;
+    /* später dynamisch per JS */
+    background: var(--accent);
+}
+
+article button {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: var(--radius);
+    padding: .45rem .9rem;
+    font-weight: 600;
+}
+
+article button:hover {
+    background: var(--accent-hover);
+}
+
+.field-info, .tab-info, .recipe-info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.field-info img, .tab-info img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}

@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/tab.css">
+    
+    <script defer type="text/javascript" src="./js/base.js"></script>
     <script defer type="text/javascript" src="./js/main.js"></script>
     <title>Farm Idle</title>
 </head>
@@ -14,25 +17,25 @@
         <aside>
             <strong>Farm Idle</strong>
             <ul>
-                <li><a href="#farm" id="tab-farm">
+                <li><a href="#farm" id="nav-farm">
                         <img src="./img/svg/building-cottage.svg" alt="Farm Icon">
                         Farm
                     </a>
                 </li>
 
-                <li><a href="#process" id="tab-process">
+                <li><a href="#process" id="nav-process">
                         <img src="./img/svg/settings.svg" alt="Farm Icon">
                         Verarbeitung
                     </a>
                 </li>
 
-                <li><a href="#markt" id="tab-markt">
+                <li><a href="#markt" id="nav-markt">
                         <img src="./img/svg/building-store.svg" alt="Farm Icon">
                         Markt
                     </a>
                 </li>
 
-                <li><a href="#inventory" id="tab-inventory">
+                <li><a href="#inventory" id="nav-inventory">
                         <img src="./img/svg/building-warehouse.svg" alt="Farm Icon">
                         Inventory
                     </a>
@@ -52,7 +55,9 @@
             <main>
 
                 <section id="tab-farm">
-                    <nav class="toolbar-farm">
+                    <h2 class="tab-titel">Farm</h2>
+
+                    <nav class="toolbar-farm toolbar">
 
                         <button type="button">
                             <img src="./img/Crops/Farming-Wheat.png" alt="wheat Crop">
@@ -64,14 +69,19 @@
                             <b>Wheat</b>
                         </button>
 
+                        <button type="button">
+                            <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja Crop">
+                            <b>Soja</b>
+                        </button>
+
                     </nav>
 
                     <div class="field-flex">
 
-                        <article class="field-nr">
+                        <article class="field-nr card">
                             <h3>Field #1</h3>
                             <p>Status</p>
-                            <div class="field-info">
+                            <div class="field-info tab-info">
                                 <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
                             </div>
                             <div class="stat-row">Statrow </div>
@@ -79,10 +89,10 @@
                             <button id="field-action">Saen</button>
                         </article>
 
-                        <article class="field-nr">
+                        <article class="field-nr card">
                             <h3>Field #1</h3>
                             <p>Status</p>
-                            <div class="field-info">
+                            <div class="field-info tab-info">
                                 <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
                             </div>
                             <div class="stat-row">Statrow </div>
@@ -90,10 +100,10 @@
                             <button id="field-action">Saen</button>
                         </article>
 
-                        <article class="field-nr">
+                        <article class="field-nr card">
                             <h3>Field #1</h3>
                             <p>Status</p>
-                            <div class="field-info">
+                            <div class="field-info tab-info">
                                 <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
                             </div>
                             <div class="stat-row">Statrow </div>
@@ -101,30 +111,89 @@
                             <button id="field-action">Saen</button>
                         </article>
 
-                        <article class="field-nr">
-                            <h3>Field #1</h3>
-                            <p>Status</p>
-                            <div class="field-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
-                            </div>
-                            <div class="stat-row">Statrow </div>
-                            <div class="progress-bar"></div>
-                            <button id="field-action">Saen</button>
-                        </article>
 
-                        <article class="field-nr">
-                            <h3>Field #1</h3>
-                            <p>Status</p>
-                            <div class="field-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
-                            </div>
-                            <div class="stat-row">Statrow </div>
-                            <div class="progress-bar">Progress-bar</div>
-                            <button id="field-action">Saen</button>
-                        </article>
+
 
                     </div>
                 </section>
+
+
+                <section id="tab-process">
+                    <h2 class="tab-titel">Verarbeitung</h2>
+
+                    <div class="field-flex">
+
+                        <!-- Mehl Rezept -->
+                        <article class="card recipe">
+                            <h3>Rezept #1</h3>
+                            <p class="sub-text">Weizen -> Mehl (30s)</p>
+                            <div class="tab-info">
+                                <img src="./img/Process/Cake-Flour.png" alt="mehl icon">
+                                <span>Mehl</span>
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Kosten: </span>
+                                <span>2</span>
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Verfügbar: </span>
+                                <span>x</span>
+                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
+                            </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="process-action">Start</button>
+                        </article>
+
+                        <!-- Popcorn Rezept -->
+                        <article class="card recipe">
+                            <h3>Rezept #2</h3>
+                            <p class="sub-text">Mais -> Popcorn (45s)</p>
+                            <div class="tab-info">
+                                <img src="./img/Process/Popcorn.svg" alt="popcorn icon">
+                                <span>Popcorn</span>
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Kosten: </span>
+                                <span>2</span>
+                                <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn icon">
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Verfügbar: </span>
+                                <span>x</span>
+                                <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn icon">
+                            </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="process-action">Start</button>
+                        </article>
+
+                        <!--Öl Rezept  -->
+                        <article class="card recipe">
+                            <h3>Rezept #3</h3>
+                            <p class="sub-text">Soja -> Öl (60s)</p>
+                            <div class="tab-info">
+                                <img src="./img/Process/soy_glass_5037435.png" alt="Oil icon">
+                                <span>Soja Öl</span>
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Kosten: </span>
+                                <span>2</span>
+                                <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja icon">
+                            </div>
+                            <div class="recipe-info tab-info">
+                                <span>Verfügbar: </span>
+                                <span>x</span>
+                                <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja icon">
+                            </div>
+                            <div class="progress-bar">Progress-bar</div>
+                            <button id="process-action">Start</button>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
 
             </main>
         </div>
