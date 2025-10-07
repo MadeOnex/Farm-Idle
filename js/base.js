@@ -36,7 +36,3 @@ function toogleTabs() {
   }
   document.getElementById("tab-farm").style.display = "block";
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  toggleTabs();
-});
