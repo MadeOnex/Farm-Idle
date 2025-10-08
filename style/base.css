@@ -90,7 +90,8 @@ aside a {
     border-radius: var(--radius);
 }
 
-aside a:hover {
+aside a:hover,
+aside a.active {
     background: var(--accent-light);
     color: var(--accent-hover);
 }

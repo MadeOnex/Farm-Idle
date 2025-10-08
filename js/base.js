@@ -1,43 +1,67 @@
-// Button Aktiv
-function toggleButton() {
-  const buttons = document.querySelectorAll(".toolbar-farm button");
+// Tabs Anzeigen / Verstecken
+function showTab(href) {
+  if (!href) return;
+  let tab = href.charAt(0) === "#" ? href.slice(1) : href;
+  let section = document.querySelectorAll("main > section");
 
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function () {
-      for (let j = 0; j < buttons.length; j++) {
-        buttons[j].classList.remove("active");
+  // Alle Tabs zu
+  for (let i = 0; i < section.length; i++) {
+    section[i].style.display = "none";
+  }
+
+  // Ziel zeigen
+  let target = document.getElementById(tab);
+  if (target) target.style.display = "block";
+
+  // Hash in URL Aktualisieren
+  history.replaceState(null, "", "#" + tab);
+}
+
+// Toggle Gruppe für Nav und Toolbar + callback
+function setupToggle(container, itemSelector, onChange) {
+  if (!container) return;
+  let items = container.querySelectorAll(itemSelector);
+
+  for (let i = 0; i < items.length; i++) {
+    items[i].addEventListener("click", function (e) {
+      if (this.tagName === "A") e.preventDefault();
+
+      // Alle Items inaktiv
+      for (let j = 0; j < items.length; j++) {
+        items[j].classList.remove("active");
       }
       this.classList.add("active");
-    });
-  }
-}
-
-// Navlist Aktiv
-function toggleNavlist() {
-  // TODO Navlist anzeigen welcher Reiter Aktiv
-}
-
-// Tab Switch blendet alle aus und dann einblenden
-function toogleTabs() {
-  const tabs = document.querySelectorAll("main > section");
-  const nav = document.querySelectorAll("aside a");
-
-  for (let i = 0; i < nav.length; i++) {
-    nav[i].addEventListener("click", function (event) {
-      event.preventDefault();
-
-      for (let j = 0; j < tabs.length; j++) {
-        tabs[j].style.display = "none";
-      }
-
-      const name = this.getAttribute("href").substring(1);
-      const tabId = "tab-" + name;
-      document.getElementById(tabId).style.display = "block";
+      if(onChange) onChange(this, e);
     });
   }
 
-  for (let j = 0; j > tabs.length; j++) {
-    tabjs[j].style.display = "none";
+  // Erstes Aktiv setzten
+  if (items.length && !container.querySelector(itemSelector + ".active")) {
+    items[0].classList.add("active");
   }
-  document.getElementById("tab-farm").style.display = "block";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  //Aktive Klasse + Wechsel
+  let aside = document.querySelector("aside");
+
+  setupToggle(aside, "a", function (link) {
+    showTab(link.getAttribute("href"));
+  });
+
+  // Start-Tab festlegen
+  let startHref = location.hash || "#tab-farm";
+
+  // Tab Anzeigen
+  showTab(startHref);
+
+  // NavLink visuell aktiv markieren
+  let startLink = aside && aside.querySelector('a[href="' + startHref + '"]');
+  if (startLink) startLink.classList.add("active");
+
+  // Toolbar logik
+  let toolBars = document.querySelectorAll(".toolbar, .toolbar-farm");
+  for (let t = 0; t < toolBars.length; t++) {
+    setupToggle(toolBars[t], "button");
+  }
+});
