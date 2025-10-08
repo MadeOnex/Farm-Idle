@@ -1,3 +1,5 @@
+// Seiten Logik layout
+
 // Tabs Anzeigen / Verstecken
 function showTab(href) {
   if (!href) return;
@@ -31,7 +33,7 @@ function setupToggle(container, itemSelector, onChange) {
         items[j].classList.remove("active");
       }
       this.classList.add("active");
-      if(onChange) onChange(this, e);
+      if (onChange) onChange(this, e);
     });
   }
 
