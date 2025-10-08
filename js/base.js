@@ -12,6 +12,11 @@ function toggleButton() {
   }
 }
 
+// Navlist Aktiv
+function toggleNavlist() {
+  // TODO Navlist anzeigen welcher Reiter Aktiv
+}
+
 // Tab Switch blendet alle aus und dann einblenden
 function toogleTabs() {
   const tabs = document.querySelectorAll("main > section");
@@ -34,5 +39,5 @@ function toogleTabs() {
   for (let j = 0; j > tabs.length; j++) {
     tabjs[j].style.display = "none";
   }
-  document.getElementById("tab-markt").style.display = "block";
+  document.getElementById("tab-farm").style.display = "block";
 }

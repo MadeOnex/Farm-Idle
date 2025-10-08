@@ -30,7 +30,7 @@
     --space-4: 1.5rem;
 
     --card-min: 14rem;
-    --card-max: 18rem;
+    --card-max: 16rem;
 }
 
 html,
@@ -114,10 +114,6 @@ header {
 main section {
     display: block;
     padding: var(--space-4)
-}
-
-.tab-titel {
-    margin-bottom: var(--space-4);
 }
 
 main > section {
