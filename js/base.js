@@ -67,3 +67,59 @@ document.addEventListener("DOMContentLoaded", function () {
     setupToggle(toolBars[t], "button");
   }
 });
+
+// Storage
+// Speichern/Laden kapseln
+const Storage = {
+  load() {
+    // Holt den Stand oder DEFAULT
+    const saved = localStorage.getItem("save");
+    if (!saved) return structuredClone(DEFAULT_STATE);
+
+    try {
+      return JSON.parse(saved);
+    } catch {
+      return structuredClone(DEFAULT_STATE);
+    }
+  },
+
+  saved(state) {
+    localStorage.setItem("saved", JSON.stringify(state));
+  },
+};
+
+// Globaler spielstand
+let state = Storage.load();
+
+// HUD Befüllen
+function updateHUD() {
+  const goldEl = document.querySelector("#hud-gold");
+  const inventoryEl = document.querySelector("#hud-inventory");
+  let totalItems = 0;
+
+  // Schaue im inventar wenn kein wert nehme 0
+  for (const amount of Object.values(state.inventory)) {
+    totalItems += amount || 0;
+  }
+
+  if (goldEl) {
+    goldEl.textContent = Math.floor(state.gold);
+  }
+
+  if (inventoryEl) {
+    inventoryEl.textContent = totalItems;
+  }
+
+}
+
+document.addEventListener("DOMContentLoaded", updateHUD);
+
+
+// Testing Debug
+
+// Game.state // Game.save() // console.log(Game.snapshot())
+window.Game = {
+  state,
+  save(){ Storage.save(state); },
+  snapshot(){ return JSON.stringify(state, null, 2); }
+};

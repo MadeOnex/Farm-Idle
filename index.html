@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="./style/style.css">
 
+    <script defer src="./js/config.js"></script>
     <script defer src="./js/base.js"></script>
     <script defer src="./js/inventory.js"></script>
 </head>
@@ -265,33 +266,21 @@
 
                     <!-- Inventar Card -->
                     <div id="inv-list" class="grid">
-                        <article class="card">
-                            <h3 class="item-title">Weizen</h3>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
-                                    alt="Weizen" /><span>Bestand: <b class="stock">12</b></span></div>
-                        </article>
-                        <article class="card">
-                            <h3 class="item-title">Mehl</h3>
-                            <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
-                                    alt="Mehl" /><span>Bestand: <b class="stock">3</b></span></div>
-                        </article>
-                        <article class="card">
-                            <h3 class="item-title">Popcorn</h3>
-                            <div class="row"><img class="icon" src="./img/Process/Popcorn.svg"
-                                    alt="Popcorn" /><span>Bestand: <b class="stock">0</b></span></div>
-                        </article>
+
+                        <!-- Template -->
+                        <template id="tpl-inventory-item">
+                            <article class="card" data-item-id="">
+                                <h3 class="item-title" data-ref="itemName">Item</h3>
+                                <div class="row">
+                                    <img class="icon" data-ref="icon" alt="" />
+                                    <span>Bestand: <b class="stock" data-ref="stock">0</b></span>
+                                </div>
+                            </article>
+                        </template>
+
                     </div>
 
-                    <!-- Template -->
-                    <template id="tpl-inventory-item">
-                        <article class="card" data-item-id="">
-                            <h3 class="item-title" data-ref="itemName">Item</h3>
-                            <div class="row">
-                                <img class="icon" data-ref="icon" alt="" />
-                                <span>Bestand: <b class="stock" data-ref="stock">0</b></span>
-                            </div>
-                        </article>
-                    </template>
+
                 </section>
             </main>
         </div>
