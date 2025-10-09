@@ -1,334 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/base.css">
-    <link rel="stylesheet" href="./style/tab.css">
-
-    <script defer type="text/javascript" src="./js/base.js"></script>
-    <script defer type="text/javascript" src="./js/inventory.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Farm Idle</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script defer src="./js/base.js"></script>
+    <script defer src="./js/inventory.js"></script>
 </head>
 
 <body>
-    <div class="flex-all">
-        <aside>
+    <div class="layout">
+        <!-- Seitenbar -->
+        <aside class="sidebar">
             <strong>Farm Idle</strong>
-            <ul>
-                <li><a href="#tab-farm" id="nav-farm" class="">
-                        <img src="./img/svg/building-cottage.svg" alt="Farm Icon">
-                        Farm
-                    </a>
-                </li>
-
-                <li><a href="#tab-process" id="nav-process">
-                        <img src="./img/svg/settings.svg" alt="Farm Icon">
-                        Verarbeitung
-                    </a>
-                </li>
-
-                <li><a href="#tab-markt" id="nav-markt">
-                        <img src="./img/svg/building-store.svg" alt="Farm Icon">
-                        Markt
-                    </a>
-                </li>
-
-                <li><a href="#tab-inventory" id="nav-inventory">
-                        <img src="./img/svg/building-warehouse.svg" alt="Farm Icon">
-                        Inventory
-                    </a>
-                </li>
-
+            <ul class="nav">
+                <li><a href="#tab-farm" id="nav-farm" class="active"><img class="icon"
+                            src="./img/svg/building-cottage.svg" alt="Farm" />Farm</a></li>
+                <li><a href="#tab-process" id="nav-process"><img class="icon" src="./img/svg/settings.svg"
+                            alt="Verarbeitung" />Verarbeitung</a></li>
+                <li><a href="#tab-markt" id="nav-markt"><img class="icon" src="./img/svg/building-store.svg"
+                            alt="Markt" />Markt</a></li>
+                <li><a href="#tab-inventory" id="nav-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
+                            alt="Inventory" />Inventory</a></li>
             </ul>
         </aside>
 
+        <!-- Hud Header -->
         <div class="content">
-            <header>
-                <div class="hud">
-                    <span>Gold: <b id="hud-gold">0</b></span>
-                    <span>Inventar: <b id="hud-inventory">0</b></span>
+            <header class="topbar">
+                <div class="hud"><span>Gold: <b id="hud-gold">0</b></span><span>Inventar: <b
+                            id="hud-inventory">0</b></span>
                 </div>
             </header>
 
             <main>
 
-                <section id="tab-farm">
-                    <h2 class="tab-titel">Farm</h2>
+                <!-- Farm-Tab -->
+                <section id="tab-farm" class="is-active">
+                    <h2 class="tab-title">Farm</h2>
 
-                    <nav class="toolbar-farm toolbar">
-
-
-                        <button type="button">
-                            <img src="./img/Crops/Farming-Wheat.png" alt="wheat Crop">
-                            <b>Weizen</b>
-                        </button>
-
-                        <button type="button">
-                            <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn Crop">
-                            <b>Mais</b>
-                        </button>
-
-                        <button type="button">
-                            <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja Crop">
-                            <b>Soja</b>
-                        </button>
-
+                    <!-- Saat -->
+                    <nav class="toolbar">
+                        <button type="button" class="btn btn-ghost"><img class="icon"
+                                src="./img/Crops/Farming-Wheat.png" alt="Weizen" /><b>Weizen</b></button>
+                        <button type="button" class="btn btn-ghost"><img class="icon"
+                                src="./img/Crops/Vegetables-Cornpng.png" alt="Mais" /><b>Mais</b></button>
+                        <button type="button" class="btn btn-ghost"><img class="icon"
+                                src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" /><b>Soja</b></button>
                     </nav>
 
-                    <div class="field-flex max-4">
-
-                        <article class="field-nr card">
+                    <!-- Felder Card -->
+                    <div class="grid">
+                        <article class="card">
                             <h3>Field #1</h3>
-                            <p>Status</p>
-                            <div class="field-info tab-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                            <p class="muted">Status</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
                             </div>
-                            <div class="stat-row">Statrow </div>
-                            <div class="progress-bar">Progress-bar</div>
-                            <button class="field-action">Saen</button>
+                            <div class="row muted">Statrow</div>
+                            <div class="progress" data-value="40"></div>
+                            <button class="btn">Säen</button>
                         </article>
 
-                        <article class="field-nr card">
-                            <h3>Field #1</h3>
-                            <p>Status</p>
-                            <div class="field-info tab-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                        <article class="card">
+                            <h3>Field #2</h3>
+                            <p class="muted">Status</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
                             </div>
-                            <div class="stat-row">Statrow </div>
-                            <div class="progress-bar">Progress-bar</div>
-                            <button class="field-action">Saen</button>
+                            <div class="row muted">Statrow</div>
+                            <div class="progress" data-value="10"></div>
+                            <button class="btn">Säen</button>
                         </article>
 
-                        <article class="field-nr card">
-                            <h3>Field #1</h3>
-                            <p>Status</p>
-                            <div class="field-info tab-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">Wheat
+                        <article class="card">
+                            <h3>Field #3</h3>
+                            <p class="muted">Status</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
                             </div>
-                            <div class="stat-row">Statrow </div>
-                            <div class="progress-bar">Progress-bar</div>
-                            <button class="field-action">Saen</button>
+                            <div class="row muted">Statrow</div>
+                            <div class="progress" data-value="0"></div>
+                            <button class="btn">Säen</button>
                         </article>
 
-
-
+                        <!-- Template -->
+                        <template id="tpl-field">
+                            <article class="card" data-field-id="">
+                                <h3 data-ref="title">Field #X</h3>
+                                <p class="muted" data-ref="status">Status</p>
+                                <div class="row">
+                                    <img class="icon" data-ref="cropIcon" alt="" />
+                                    <span data-ref="cropName">Crop</span>
+                                </div>
+                                <div class="row muted" data-ref="stats">—</div>
+                                <div class="progress" data-value="0"></div>
+                                <button class="btn" data-action="sow">Säen</button>
+                            </article>
+                        </template>
                     </div>
                 </section>
 
-
+                <!-- Verarbeitung -->
                 <section id="tab-process">
+                    <h2 class="tab-title">Verarbeitung</h2>
 
-                    <div>
-                        <h2 class="tab-titel">Verarbeitung</h2>
+                    <!-- Rezepte Card -->
+                    <div class="grid">
+                        <article class="card">
+                            <h3>Rezept #1</h3>
+                            <p class="subtext">Weizen → Mehl (30s)</p>
+                            <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
+                                    alt="Mehl" /><span>Mehl</span></div>
+                            <div class="row"><span>Kosten:</span><span>2</span><img class="icon"
+                                    src="./img/Crops/Farming-Wheat.png" alt="Weizen" /></div>
+                            <div class="row"><span>Verfügbar:</span><span>x</span><img class="icon"
+                                    src="./img/Crops/Farming-Wheat.png" alt="Weizen" /></div>
+                            <button class="btn">Start</button>
+                        </article>
 
-                        <div class="field-flex max-4">
+                        <article class="card">
+                            <h3>Rezept #2</h3>
+                            <p class="subtext">Mais → Popcorn (45s)</p>
+                            <div class="row"><img class="icon" src="./img/Process/Popcorn.svg"
+                                    alt="Popcorn" /><span>Popcorn</span>
+                            </div>
+                            <div class="row"><span>Kosten:</span><span>2</span><img class="icon"
+                                    src="./img/Crops/Vegetables-Cornpng.png" alt="Mais" /></div>
+                            <div class="row"><span>Verfügbar:</span><span>x</span><img class="icon"
+                                    src="./img/Crops/Vegetables-Cornpng.png" alt="Mais" /></div>
+                            <button class="btn">Start</button>
+                        </article>
 
-                            <!-- Mehl Rezept -->
-                            <article class="card recipe">
-                                <h3>Rezept #1</h3>
-                                <p class="sub-text">Weizen -> Mehl (30s)</p>
-                                <div class="tab-info">
-                                    <img src="./img/Process/Cake-Flour.png" alt="mehl icon">
-                                    <span>Mehl</span>
+                        <article class="card">
+                            <h3>Rezept #3</h3>
+                            <p class="subtext">Soja → Öl (60s)</p>
+                            <div class="row"><img class="icon" src="./img/Process/soy_glass_5037435.png"
+                                    alt="Soja Öl" /><span>Soja
+                                    Öl</span></div>
+                            <div class="row"><span>Kosten:</span><span>2</span><img class="icon"
+                                    src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" /></div>
+                            <div class="row"><span>Verfügbar:</span><span>x</span><img class="icon"
+                                    src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" /></div>
+                            <button class="btn">Start</button>
+                        </article>
+
+                        <!-- Template -->
+                        <template id="tpl-recipe">
+                            <article class="card" data-recipe-id="">
+                                <h3 data-ref="title">Rezept</h3>
+                                <p class="subtext" data-ref="subtitle">A → B (Xs)</p>
+                                <div class="row">
+                                    <img class="icon" data-ref="outIcon" alt="" />
+                                    <span data-ref="outName">Output</span>
                                 </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Kosten: </span>
-                                    <span>2</span>
-                                    <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
+                                <div class="row">
+                                    <span>Kosten:</span>
+                                    <span data-ref="costAmount">0</span>
+                                    <img class="icon" data-ref="costIcon" alt="" />
                                 </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Verfügbar: </span>
-                                    <span>x</span>
-                                    <img src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
+                                <div class="row">
+                                    <span>Verfügbar:</span>
+                                    <span data-ref="available">0</span>
+                                    <img class="icon" data-ref="availIcon" alt="" />
                                 </div>
-                                <button class="process-action">Start</button>
+                                <button class="btn" data-action="start">Start</button>
                             </article>
-
-                            <!-- Popcorn Rezept -->
-                            <article class="card recipe">
-                                <h3>Rezept #2</h3>
-                                <p class="sub-text">Mais -> Popcorn (45s)</p>
-                                <div class="tab-info">
-                                    <img src="./img/Process/Popcorn.svg" alt="popcorn icon">
-                                    <span>Popcorn</span>
-                                </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Kosten: </span>
-                                    <span>2</span>
-                                    <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn icon">
-                                </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Verfügbar: </span>
-                                    <span>x</span>
-                                    <img src="./img/Crops/Vegetables-Cornpng.png" alt="corn icon">
-                                </div>
-                                <button class="process-action">Start</button>
-                            </article>
-
-                            <!--Öl Rezept  -->
-                            <article class="card recipe">
-                                <h3>Rezept #3</h3>
-                                <p class="sub-text">Soja -> Öl (60s)</p>
-                                <div class="tab-info">
-                                    <img src="./img/Process/soy_glass_5037435.png" alt="Oil icon">
-                                    <span>Soja Öl</span>
-                                </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Kosten: </span>
-                                    <span>2</span>
-                                    <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja icon">
-                                </div>
-                                <div class="recipe-info tab-info">
-                                    <span>Verfügbar: </span>
-                                    <span>x</span>
-                                    <img src="./img/Crops/Allergens-Soy-Bean-2--Streamline-Flex.png" alt="soja icon">
-                                </div>
-                                <button class="process-action">Start</button>
-                            </article>
-
-
-
-                        </div>
-
-
+                        </template>
                     </div>
 
                     <!-- Aktive Jobs -->
-                    <div>
-                        <h3 class="tab-titel">Aktive Jobs <small>0/3</small></h3>
+                    <h3 class="tab-title">Aktive Jobs <small>0/3</small></h3>
+                    <div class="grid">
+                        <article class="card">
+                            <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
+                                    alt="" /><strong>Mehl</strong><span class="badge">läuft</span></div>
+                            <div class="progress" data-value="66"></div>
+                            <div class="row spread"><small>Noch 25 s</small><button
+                                    class="btn btn-ghost">Abbrechen</button></div>
+                        </article>
 
-                        <div id="job-list" class="field-flex max-4">
+                        <article class="card">
+                            <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
+                                    alt="" /><strong>Mehl</strong><span class="badge">läuft</span></div>
+                            <div class="progress" data-value="20"></div>
+                            <div class="row spread"><small>Noch 25 s</small><button
+                                    class="btn btn-ghost">Abbrechen</button></div>
+                        </article>
 
-                            <article class="card job">
-                                <div class="tab-info">
-                                    <img src="./img/Process/Cake-Flour.png" alt="">
-                                    <strong>Mehl</strong>
-                                    <span class="badge">läuft</span>
+                        <!-- Template -->
+                        <template id="tpl-job">
+                            <article class="card" data-job-id="">
+                                <div class="row">
+                                    <img class="icon" data-ref="prodIcon" alt="" />
+                                    <strong data-ref="prodName">Produkt</strong>
+                                    <span class="badge" data-ref="state">läuft</span>
                                 </div>
-
-                                <div class="progress-bar"></div>
-
-                                <div class="job-meta">
-                                    <small>Noch 25 s</small>
-                                    <button type="button">Abbrechen</button>
-                                </div>
-                            </article>
-
-                            <article class="card job">
-                                <div class="tab-info">
-                                    <img src="./img/Process/Cake-Flour.png" alt="">
-                                    <strong>Mehl</strong>
-                                    <span class="badge">läuft</span>
-                                </div>
-
-                                <div class="progress-bar"></div>
-
-                                <div class="job-meta">
-                                    <small>Noch 25 s</small>
-                                    <button type="button">Abbrechen</button>
+                                <div class="progress" data-value="0"></div>
+                                <div class="row spread">
+                                    <small data-ref="timeLeft">Noch 0 s</small>
+                                    <button class="btn btn-ghost" data-action="cancel">Abbrechen</button>
                                 </div>
                             </article>
-
-
-                        </div>
+                        </template>
                     </div>
                 </section>
 
-
+                <!-- Markt Tab -->
                 <section id="tab-markt">
-                    <h2 class="tab-titel">Markt</h2>
+                    <h2 class="tab-title">Markt</h2>
+                    <h3 class="tab-subtitle">Aktuelle Marktpreise</h3>
 
-                    <h3 class="tab-subtitel">Aktuelle Marktpreise</h3>
-
-                    <div class="field-flex max-4">
-                        <article class="card market-items">
+                    <!-- Markt Card -->
+                    <div class="grid">
+                        <article class="card">
                             <h3 class="item-title">Weizen</h3>
-                            <p class="sub-text price">Preis/Stück: 1.20 G</p>
-                            <div class="tab-info">
-                                <img class="item-icon" src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
-                                <span>Bestand <b class="stock">12</b></span>
-                            </div>
-                            <div class="actions">
-                                <label class="field-info ">
-                                    Menge:
-                                    <input class="qty" type="number" value="10" min="1" step="1">
-                                </label>
-                                <button type="button" class="sell-n">Verkaufen</button>
+                            <p class="subtext price">Preis/Stück: 1.20 G</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
+                                    alt="Weizen" /><span>Bestand <b class="stock">12</b></span></div>
+                            <div class="stack">
+                                <label class="row">Menge: <input class="qty" type="number" value="10" min="1"
+                                        step="1" /></label>
+                                <button type="button" class="btn">Verkaufen</button>
                             </div>
                         </article>
 
-                        <article class="card market-items">
+                        <article class="card">
                             <h3 class="item-title">Weizen</h3>
-                            <p class="sub-text price">Preis/Stück: 1.20 G</p>
-                            <div class="tab-info">
-                                <img class="item-icon" src="./img/Crops/Farming-Wheat.png" alt="wheat icon">
-                                <span>Bestand <b class="stock">12</b></span>
-                            </div>
-                            <div class="actions">
-                                <label class="field-info ">
-                                    Menge:
-                                    <input class="qty" type="number" value="10" min="1" step="1">
-                                </label>
-                                <button type="button" class="sell-n">Verkaufen</button>
+                            <p class="subtext price">Preis/Stück: 1.20 G</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
+                                    alt="Weizen" /><span>Bestand <b class="stock">12</b></span></div>
+                            <div class="stack">
+                                <label class="row">Menge: <input class="qty" type="number" value="10" min="1"
+                                        step="1" /></label>
+                                <button type="button" class="btn">Verkaufen</button>
                             </div>
                         </article>
 
-
+                        <!-- Template -->
+                        <template id="tpl-market-item">
+                            <article class="card" data-item-id="">
+                                <h3 class="item-title" data-ref="itemName">Item</h3>
+                                <p class="subtext price">Preis/Stück: <span data-ref="price">0</span> <span
+                                        data-ref="unit">G</span></p>
+                                <div class="row">
+                                    <img class="icon" data-ref="icon" alt="" />
+                                    <span>Bestand <b class="stock" data-ref="stock">0</b></span>
+                                </div>
+                                <div class="stack">
+                                    <label class="row">Menge:
+                                        <input class="qty" type="number" value="1" min="1" step="1" data-ref="qty" />
+                                    </label>
+                                    <button type="button" class="btn" data-action="sell">Verkaufen</button>
+                                </div>
+                            </article>
+                        </template>
                     </div>
-
                 </section>
 
-
+                <!-- Inventar Tab -->
                 <section id="tab-inventory">
-                    <h2 class="tab-titel">Inventory</h2>
+                    <h2 class="tab-title">Inventory</h2>
 
-                    <div id="inv-list" class="field-flex max-4">
-
-                        <!-- Beispielkarten (nur zum Anschauen; später per JS rendern oder löschen) -->
-                        <article class="card inv-item">
+                    <!-- Inventar Card -->
+                    <div id="inv-list" class="grid">
+                        <article class="card">
                             <h3 class="item-title">Weizen</h3>
-                            <div class="tab-info">
-                                <img src="./img/Crops/Farming-Wheat.png" alt="Weizen">
-                                <span>Bestand: <b class="stock">12</b></span>
-                            </div>
+                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
+                                    alt="Weizen" /><span>Bestand: <b class="stock">12</b></span></div>
                         </article>
-
-                        <article class="card inv-item">
+                        <article class="card">
                             <h3 class="item-title">Mehl</h3>
-                            <div class="tab-info">
-                                <img src="./img/Process/Cake-Flour.png" alt="Mehl">
-                                <span>Bestand: <b class="stock">3</b></span>
-                            </div>
+                            <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
+                                    alt="Mehl" /><span>Bestand: <b class="stock">3</b></span></div>
                         </article>
-
-                        <article class="card inv-item">
+                        <article class="card">
                             <h3 class="item-title">Popcorn</h3>
-                            <div class="tab-info">
-                                <img src="./img/Process/Popcorn.svg" alt="Popcorn">
-                                <span>Bestand: <b class="stock">0</b></span>
-                            </div>
+                            <div class="row"><img class="icon" src="./img/Process/Popcorn.svg"
+                                    alt="Popcorn" /><span>Bestand: <b class="stock">0</b></span></div>
                         </article>
-
-
                     </div>
 
-                    <!-- Optional: Template für späteres JS-Rendering -->
-                    <template id="tpl-inv-item">
-                        <article class="card inv-item">
-                            <h3 class="item-title">Item</h3>
-                            <div class="tab-info">
-                                <img class="item-icon" src="" alt="">
-                                <span>Bestand: <b class="stock">0</b></span>
+                    <!-- Template -->
+                    <template id="tpl-inventory-item">
+                        <article class="card" data-item-id="">
+                            <h3 class="item-title" data-ref="itemName">Item</h3>
+                            <div class="row">
+                                <img class="icon" data-ref="icon" alt="" />
+                                <span>Bestand: <b class="stock" data-ref="stock">0</b></span>
                             </div>
                         </article>
                     </template>
                 </section>
-
-
-
-
             </main>
         </div>
     </div>
