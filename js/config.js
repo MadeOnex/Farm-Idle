@@ -18,7 +18,7 @@ const CONFIG = {
     },
     popcorn: {
       name: "Popcorn",
-      icon: "./img/Process/Cake-Flour.png",
+      icon: "./img/Process/Popcorn.svg",
     },
     oil: {
       name: "Öl",
@@ -28,15 +28,15 @@ const CONFIG = {
   CROPS: {
     wheat: {
       time: 20000,
-      ernten: { wheat: 1 },
+      yield: { wheat: 1 },
     },
     corn: {
       time: 20000,
-      ernten: { corn: 1 },
+      yield: { corn: 1 },
     },
     soy: {
       time: 20000,
-      ernten: { soy: 1 },
+      yield: { soy: 1 },
     },
   },
   RECIPES: {
@@ -44,12 +44,13 @@ const CONFIG = {
     popcorn: { in: { corn: 2 }, out: { popcorn: 1 }, time: 45000 },
     oil: { in: { soy: 2 }, out: { oil: 1 }, time: 60000 },
   },
-};
-
-const STATE = {
+ DEFAULT_STATE: {
     version: 1,
     gold: 0,
     inventory: {wheat: 3, corn: 0, soy: 0, flour: 0, popcorn: 0, oil: 0},
     fields: [null],
     jobs: []
 }
+};
+
+const { ITEMS, CROPS, RECIPES, DEFAULT_STATE } = CONFIG;

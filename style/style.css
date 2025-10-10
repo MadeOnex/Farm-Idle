@@ -17,7 +17,6 @@ body {
 }
 
 :root {
-    /* Farben */
     --bg-page: #f9fafb;
     --bg-elev: #fff;
     --bg-toolbar: #f1f5f9;
@@ -32,19 +31,16 @@ body {
     --warn: #f59e0b;
     --danger: #ef4444;
 
-    /* Radius & Abstände */
     --r: 12px;
     --s-1: .5rem;
     --s-2: .75rem;
     --s-3: 1rem;
     --s-4: 1.5rem;
 
-    /* Kartenbreiten */
     --card-min: 14rem;
     --card-max: 18rem;
 }
 
-/* Layout */
 .layout {
     display: flex;
     min-height: 100vh;
@@ -114,7 +110,6 @@ main>section.is-active {
     display: block;
 }
 
-/* Bausteine */
 .icon {
     width: 20px;
     height: 20px;
@@ -249,7 +244,6 @@ input[type="number"].qty {
     gap: var(--s-1);
 }
 
-/* Optional: Abschnitts‑spezifische Kleinigkeiten */
 .price {
     font-weight: 600;
 }
