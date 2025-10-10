@@ -93,10 +93,14 @@ body {
     padding: var(--s-3) var(--s-4);
     border-bottom: 1px solid var(--border);
     background: var(--bg-toolbar);
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .hud {
     display: flex;
+    align-self: center;
     gap: 2rem;
     font-weight: 600;
 }
