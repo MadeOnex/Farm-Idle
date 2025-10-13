@@ -1,56 +1,30 @@
 <?php
+ini_set('display_errors', '1'); error_reporting(E_ALL);
 session_start();
-require __DIR__ . "/connection.php";
+require __DIR__ . '/connection.php';
 
-if (isset($_GET["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+$login = trim($_POST['login'] ?? '');   // Feldname aus deinem Login-Form
+$pass  = $_POST['password'] ?? '';
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-    $result = $statement->execute([$username]);
-    $user = $statement->fetch();
-
-    // Passwort Überprüfen
-    if ($user !== false && password_verify($password, $user["password"])) {
-        session_regenerate_id(true);
-        header("Location: ../index.html");
-        exit;
-    } else {
-        $errorMessage = "Username oder Passwort war ungültig.";
-    }
+if ($login === '' || $pass === '') {
+  header('Location: /login.html?tab=login&m=err&text=' . urlencode('Bitte alles ausfüllen.'));
+  exit;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm-Idle</title>
+$stmt = $pdo->prepare('SELECT id, username, password_hash FROM users WHERE username = ? LIMIT 1');
+$stmt->execute([$login]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if (!$user || !password_verify($pass, $user['password_hash'])) {
+  header('Location: /login.html?tab=login&m=err&text=' . urlencode('Username oder Passwort falsch.'));
+  exit;
+}
 
-</head>
+// Session füllen (eingeloggt bleiben über weitere Seiten)
+session_regenerate_id(true);
+$_SESSION['uid']      = $user['id'];
+$_SESSION['username'] = $user['username'];
 
-<body>
-
-    <?php
-    if (isset($errorMessage)) {
-        echo $errorMessage;
-    }
-    ?>
-
-    <form action="?login=1" method="post">
-        <h2>Login</h2>
-
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="Username" required>
-
-        <label for="password">Passwort</label>
-        <input type="password" name="password" placeholder="Passwort" required>
-
-        <button type="submit">Login</button>
-    </form>
-
-</body>
-
-</html>
+// Weiter zur App – Pfad anpassen, wenn dein index woanders liegt
+header('Location: /index.php');
+exit;

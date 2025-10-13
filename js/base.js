@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
 // Storage
 // Speichern/Laden kapseln
 const Storage = {
