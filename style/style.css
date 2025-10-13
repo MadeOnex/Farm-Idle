@@ -252,15 +252,63 @@ input[type="number"].qty {
     font-weight: 600;
 }
 
-.toolbar button.active {
+.toolbar button.active,
+.tabs .btn.active {
     background: var(--accent);
     color: #fff;
     border-color: var(--accent);
 }
 
-.auth-wrap { min-height: 100vh; display:grid; place-items:center; padding: var(--s-4); }
-    .auth-card { width:100%; max-width:420px; }
-    .tabs { display:flex; gap:.5rem; margin-bottom: var(--s-3); }
-    .tabs .btn { flex:1; }
-    .msg { margin-bottom: var(--s-2); }
-    .hidden { display:none; }
+
+/* Login / Register Page */
+.auth-wrap {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-4);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+}
+
+
+.tabs {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: var(--s-3);
+}
+
+.tabs .btn {
+    flex: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.msg {
+    margin-bottom: var(--s-2);
+}
+
+.msg.ok {
+    color: var(--ok);
+}
+
+.msg.err {
+    color: var(--danger);
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: .5rem .6rem;
+}
+
+.auth-card label {
+    font-weight: 600;
+}

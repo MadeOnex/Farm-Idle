@@ -14,7 +14,7 @@
         <div class="card auth-card">
             <h2>Willkommen</h2>
 
-            <!-- Register / Login -->
+            <!-- Register / Login Tabs -->
             <div class="tabs">
                 <button class="btn btn-ghost" data-tab="login">Login</button>
                 <button class="btn btn-ghost" data-tab="register">Register</button>
@@ -25,25 +25,25 @@
 
             <!-- Login -->
             <form action="./php/login.php" id="panel-login" class="stack" method="post">
-                <label>Username</label>
-                <input type="text" name="login" required>
+                <label for="login-username">Username</label>
+                <input type="text" name="login"  id="login-username" required>
 
-                <label>Passwort</label>
-                <input type="password" name="password" required>
+                <label for="login-password">Passwort</label>
+                <input type="password" name="password" id="login-password" required>
 
-                <button type="button" class="btn">Einlogen</button>
+                <button type="button" class="btn">Einloggen</button>
             </form>
 
             <!-- Register -->
             <form action="./php/register.php" id="panel-register" class="stack hidden" method="post">
-                <label>Username</label>
-                <input type="text" name="login" required>
+                <label for="register-username">Username</label>
+                <input type="text" name="login" id="register-username" required>
 
-                <label>Passwort</label>
-                <input type="password" name="password1" required>
+                <label for="register-password">Passwort</label>
+                <input type="password" name="password" id="register-password" required>
 
-                <label>Passwort wiederholen</label>
-                <input type="password" name="password2" required>
+                <label for="register-password2">Passwort wiederholen</label>
+                <input type="password" name="password2" id="register-password2" required>
 
                 <button type="button" class="btn">Registrieren</button>
             </form>

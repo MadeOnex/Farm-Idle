@@ -1,6 +1,7 @@
 const login = document.getElementById("panel-login");
 const register = document.getElementById("panel-register");
 const msgBox = document.getElementById("msg");
+const tabs = document.querySelectorAll("[data-tab]");
 
 // Tabs wechseln
 function show(tab) {
@@ -13,22 +14,25 @@ function show(tab) {
   }
 
   // Tab-Button aktiv markieren
-  document.querySelectorAll("[data-tab]").forEach((button) => {
+  tabs.forEach((button) => {
     button.classList.toggle("active", button.dataset.tab === tab);
   });
 }
 
 // Tab Klicken
-document.querySelectorAll("[data-tab]").forEach((button) => {
+tabs.forEach((button) => {
   button.addEventListener("click", () => show(button.dataset.tab));
 });
 
-// 
- // aus URL lesen: ?tab=register&m=ok|err&text=...
-    const qs = new URLSearchParams(location.search);
-    show(qs.get('tab') || 'login');
-    const text = qs.get('text');
-    if (text) {
-      msgBox.textContent = text;
-      msgBox.style.color = qs.get('m') === 'ok' ? 'var(--ok,green)' : 'var(--danger,crimson)';
-    }
+// Erklären
+// ?tab=register&m=ok|err&text=Nachricht
+const qs = new URLSearchParams(location.search);
+show(qs.get("tab") || "login");
+
+const text = qs.get("text");
+if (text) {
+  const ok = qs.get("m") === "ok";
+  msgBox.textContent = text;
+  msgBox.classList.toggle("ok", ok);
+  msgBox.classList.toggle("err", !ok);
+}
