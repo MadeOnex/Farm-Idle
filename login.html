@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm-Idle</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+
+    <div class="auth-wrap">
+        <div class="card auth-card">
+            <h2>Willkommen</h2>
+
+            <!-- Register / Login -->
+            <div class="tabs">
+                <button class="btn btn-ghost" data-tab="login">Login</button>
+                <button class="btn btn-ghost" data-tab="register">Register</button>
+            </div>
+
+            <!-- Messages -->
+            <div class="msg" id="msg"> </div>
+
+            <!-- Login -->
+            <form action="./php/login.php" id="panel-login" class="stack" method="post">
+                <label>Username</label>
+                <input type="text" name="login" required>
+
+                <label>Passwort</label>
+                <input type="password" name="password" required>
+
+                <button type="button" class="btn">Einlogen</button>
+            </form>
+
+            <!-- Register -->
+            <form action="./php/register.php" id="panel-register" class="stack hidden" method="post">
+                <label>Username</label>
+                <input type="text" name="login" required>
+
+                <label>Passwort</label>
+                <input type="password" name="password1" required>
+
+                <label>Passwort wiederholen</label>
+                <input type="password" name="password2" required>
+
+                <button type="button" class="btn">Registrieren</button>
+            </form>
+        </div>
+    </div>
+
+<script src="./js/auth.js"></script>
+</body>
+
+</html>
