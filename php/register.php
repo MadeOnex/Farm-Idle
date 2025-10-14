@@ -35,6 +35,12 @@ $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
 $stmt->execute([$username, $hash]);
 
 // Default save anlegen
+$userId = (int)$pdo->lastInsertId();
 
+$default = require __DIR__ . "/default_state.php";
+$json = json_encode($default, JSON_UNESCAPED_UNICODE);
+
+$stmt = $pdo->prepare("INSERT INTO saves (userId, gameStateJson, `timestamp`) VALUES (?, ?, CURTIME())");
+$stmt->execute([$userId, $json]);
 
 flash_redirect("../login.html", "Registrierung erfolgreich. Bitte einlogen", true, "login");
