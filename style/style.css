@@ -319,7 +319,6 @@ input[type="number"].qty {
 
 .hud .user {
     color: var(--accent-2);
-    font-weight: 600;
     margin-right: var(--s-3);
     display: flex;
     align-items: center;
