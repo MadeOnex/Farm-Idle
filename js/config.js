@@ -47,7 +47,7 @@ const CONFIG = {
  DEFAULT_STATE: {
     version: 1,
     gold: 0,
-    inventory: {wheat: 3, corn: 0, soy: 0, flour: 0, popcorn: 0, oil: 0},
+    inventory: {wheat: 0, corn: 0, soy: 0, flour: 0, popcorn: 0, oil: 0},
     fields: [null],
     jobs: []
 }

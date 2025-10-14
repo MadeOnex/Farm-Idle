@@ -34,4 +34,7 @@ $hash = password_hash($pass1, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
 $stmt->execute([$username, $hash]);
 
+// Default save anlegen
+
+
 flash_redirect("../login.html", "Registrierung erfolgreich. Bitte einlogen", true, "login");
