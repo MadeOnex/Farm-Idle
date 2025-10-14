@@ -312,3 +312,5 @@ input[type="number"].qty {
 .auth-card label {
     font-weight: 600;
 }
+
+.user { color: red; }
