@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 // Storage
 // Speichern/Laden kapseln
 const Storage = {
@@ -110,17 +111,19 @@ function updateHUD() {
   if (inventoryEl) {
     inventoryEl.textContent = totalItems;
   }
-
 }
 
 document.addEventListener("DOMContentLoaded", updateHUD);
-
 
 // Testing Debug
 
 // Game.state // Game.save() // console.log(Game.snapshot())
 window.Game = {
   state,
-  save(){ Storage.save(state); },
-  snapshot(){ return JSON.stringify(state, null, 2); }
+  save() {
+    Storage.save(state);
+  },
+  snapshot() {
+    return JSON.stringify(state, null, 2);
+  },
 };

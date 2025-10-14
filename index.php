@@ -31,13 +31,13 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
         <aside class="sidebar">
             <strong>Farm Idle</strong>
             <ul class="nav">
-                <li><a href="#tab-farm" id="nav-farm" class="active"><img class="icon"
+                <li><a href="#tab-farm" data-tab="tab-farm" id="nav-farm" class="active"><img class="icon"
                             src="./img/svg/building-cottage.svg" alt="Farm" />Farm</a></li>
-                <li><a href="#tab-process" id="nav-process"><img class="icon" src="./img/svg/settings.svg"
+                <li><a href="#tab-process" data-tab="tab-process" id="nav-process"><img class="icon" src="./img/svg/settings.svg"
                             alt="Verarbeitung" />Verarbeitung</a></li>
-                <li><a href="#tab-markt" id="nav-markt"><img class="icon" src="./img/svg/building-store.svg"
+                <li><a href="#tab-markt" data-tab="tab-markt" id="nav-markt"><img class="icon" src="./img/svg/building-store.svg"
                             alt="Markt" />Markt</a></li>
-                <li><a href="#tab-inventory" id="nav-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
+                <li><a href="#tab-inventory" data-tab="tab-inventory" id="nav-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
                             alt="Inventory" />Inventory</a></li>
             </ul>
         </aside>
@@ -53,13 +53,13 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                     <button type="button" class="btn btn-ghost" id="btn-save"><b>Speichern</b></button>
                     <a href="./php/logout.php" class="btn btn-ghost"><b>Logout</b></a>
                 </div>
-                
+
             </header>
 
             <main>
 
                 <!-- Farm-Tab -->
-                <section id="tab-farm" class="is-active">
+                <section id="tab-farm" data-tab="tab-farm" class="is-active">
                     <h2 class="tab-title">Farm</h2>
 
                     <!-- Saat -->
@@ -122,7 +122,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                 </section>
 
                 <!-- Verarbeitung -->
-                <section id="tab-process">
+                <section id="tab-process" data-tab="tab-process" class="hidden">
                     <h2 class="tab-title">Verarbeitung</h2>
 
                     <!-- Rezepte Card -->
@@ -227,7 +227,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                 </section>
 
                 <!-- Markt Tab -->
-                <section id="tab-markt">
+                <section id="tab-markt" data-tab="tab-markt" class="hidden">
                     <h2 class="tab-title">Markt</h2>
                     <h3 class="tab-subtitle">Aktuelle Marktpreise</h3>
 
@@ -279,7 +279,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                 </section>
 
                 <!-- Inventar Tab -->
-                <section id="tab-inventory">
+                <section id="tab-inventory" data-tab="tab-inventory">
                     <h2 class="tab-title">Inventory</h2>
 
                     <!-- Inventar Card -->
