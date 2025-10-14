@@ -25,16 +25,34 @@ tabs.forEach((button) => {
   button.addEventListener("click", () => show(button.dataset.tab));
 });
 
+// --- kleine Cookie-Helpers ---
+function readCookie(name) {
+  const m = document.cookie.match(
+    new RegExp(
+      "(?:^|; )" + name.replace(/([$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"
+    )
+  );
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function eraseCookie(name) {
+  document.cookie = name + "=; Max-Age=0; path=/";
+}
 
-// Erklären Lassen
-// ?tab=register&m=ok|err&text=Nachricht
-const queryString = new URLSearchParams(location.search);
-show(queryString.get("tab") || "login");
+// --- Flash aus Cookies lesen ---
+const flashText = readCookie("flash_text");
+const flashOk = readCookie("flash_ok");
+const flashTab = readCookie("flash_tab");
 
-const text = queryString.get("text");
-if (text) {
-  const ok = queryString.get("m") === "ok";
-  msgBox.textContent = text;
+if (flashTab) show(flashTab);
+else show("login");
+
+if (flashText) {
+  msgBox.textContent = flashText;
+  const ok = flashOk === "1";
   msgBox.classList.toggle("ok", ok);
   msgBox.classList.toggle("err", !ok);
+  msgBox.style.color = ok ? "var(--ok,green)" : "var(--danger,crimson)";
 }
+
+// einmalig -> löschen
+["flash_text", "flash_ok", "flash_tab"].forEach(eraseCookie);
