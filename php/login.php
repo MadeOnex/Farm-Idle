@@ -11,7 +11,7 @@ function flash_redirect(string $path, string $text, bool $ok, string $tab)
   exit;
 }
 
-$login = $_POST["login"];
+$login = trim($_POST["login"]);
 $pass = $_POST["password"];
 
 

@@ -10,7 +10,7 @@ function flash_redirect(string $path, string $text, bool $ok, string $tab)
     exit;
 }
 
-$username = $_POST["username"];
+$username = trim($_POST["username"]);
 $pass1 = $_POST["password"];
 $pass2 = $_POST["password2"];
 
