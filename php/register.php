@@ -10,14 +10,11 @@ function flash_redirect(string $path, string $text, bool $ok, string $tab)
     exit;
 }
 
-$username = $_POST["username"] ?? "";
-$pass1 = $_POST["password"] ?? "";
-$pass2 = $_POST["password2"] ?? "";
+$username = $_POST["username"];
+$pass1 = $_POST["password"];
+$pass2 = $_POST["password2"];
 
 // IF Abfragen
-if ($username === "" || $pass1 === "" || $pass2 === "") {
-    flash_redirect("../login.php", "Bitte alles ausfüllen.", false, "register");
-}
 if ($pass1 !== $pass2) {
     flash_redirect("../login.html", "Passwörter stimmen nicht überein.", false, "register");
 }

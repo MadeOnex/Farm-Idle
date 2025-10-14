@@ -313,4 +313,18 @@ input[type="number"].qty {
     font-weight: 600;
 }
 
-.user { color: red; }
+.hud a {
+    text-decoration: none;
+}
+
+.hud .user {
+    color: var(--accent-2);
+    font-weight: 600;
+    margin-right: var(--s-3);
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-weak);
+    border-radius: var(--r);
+    border: 1px solid var(--accent);
+    padding: .45rem .9rem;
+}

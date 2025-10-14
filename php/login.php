@@ -11,12 +11,9 @@ function flash_redirect(string $path, string $text, bool $ok, string $tab)
   exit;
 }
 
-$login = $_POST["login"] ?? "";
-$pass = $_POST["password"] ?? "";
+$login = $_POST["login"];
+$pass = $_POST["password"];
 
-if ($login === "" || $pass === "") {
-  flash_redirect("../login.html", "Bitte alles ausfüllen", false, "login");
-}
 
 $stmt = $pdo->prepare("SELECT username, password FROM users WHERE username = ? LIMIT 1");
 $stmt->execute([$login]);
