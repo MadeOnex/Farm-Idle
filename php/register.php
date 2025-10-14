@@ -35,6 +35,6 @@ if ($stmt->fetch()) {
 // DB Speichern
 $hash = password_hash($pass1, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-$stmt->execute([$username, $pass1]);
+$stmt->execute([$username, $hash]);
 
 flash_redirect("../login.html", "Registrierung erfolgreich. Bitte einlogen", true, "login");

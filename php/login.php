@@ -11,8 +11,8 @@ function flash_redirect(string $path, string $text, bool $ok, string $tab)
   exit;
 }
 
-$login = trim($_POST["login-username"] ?? "");
-$pass = $_post["password"] ?? "";
+$login = $_POST["login"] ?? "";
+$pass = $_POST["password"] ?? "";
 
 if ($login === "" || $pass === "") {
   flash_redirect("../login.html", "Bitte alles ausfüllen", false, "login");
