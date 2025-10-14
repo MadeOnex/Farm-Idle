@@ -13,7 +13,7 @@ const CONFIG = {
       icon: "./img/Crops/Allergens-Soy-Bean.png",
     },
     flour: {
-      name: "mehl",
+      name: "Mehl",
       icon: "./img/Process/Cake-Flour.png",
     },
     popcorn: {

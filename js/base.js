@@ -24,6 +24,7 @@ function setupToggle(container, itemSelector, onChange) {
   if (!container) return;
   let items = container.querySelectorAll(itemSelector);
 
+
   for (let i = 0; i < items.length; i++) {
     items[i].addEventListener("click", function (e) {
       if (this.tagName === "A") e.preventDefault();
@@ -33,6 +34,7 @@ function setupToggle(container, itemSelector, onChange) {
         items[j].classList.remove("active");
       }
       this.classList.add("active");
+      // Callback
       if (onChange) onChange(this, e);
     });
   }
@@ -73,20 +75,22 @@ document.addEventListener("DOMContentLoaded", function () {
 // Storage
 // Speichern/Laden kapseln
 const Storage = {
+  KEY: "save",
+
   load() {
     // Holt den Stand oder DEFAULT
-    const saved = localStorage.getItem("save");
-    if (!saved) return structuredClone(DEFAULT_STATE);
+    const raw = localStorage.getItem(this.KEY);
+    if (!raw) return structuredClone(DEFAULT_STATE);
 
     try {
-      return JSON.parse(saved);
+      return JSON.parse(raw);
     } catch {
       return structuredClone(DEFAULT_STATE);
     }
   },
 
   saved(state) {
-    localStorage.setItem("saved", JSON.stringify(state));
+    localStorage.setItem(this.KEY, JSON.stringify(state));
   },
 };
 
