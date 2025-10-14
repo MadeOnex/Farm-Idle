@@ -15,7 +15,7 @@ $login = trim($_POST["login"]);
 $pass = $_POST["password"];
 
 
-$stmt = $pdo->prepare("SELECT username, password FROM users WHERE username = ? LIMIT 1");
+$stmt = $pdo->prepare("SELECT userId AS user_id, username, password FROM users WHERE username = ? LIMIT 1");
 $stmt->execute([$login]);
 $user = $stmt->fetch();
 
@@ -24,6 +24,7 @@ if (!$user || !password_verify($pass, $user["password"])) {
 }
 
 session_regenerate_id(true);
+$_SESSION["user_id"] = (int)$user["user_id"];
 $_SESSION["username"] = $user["username"];
 
 header("Location: ../index.php");

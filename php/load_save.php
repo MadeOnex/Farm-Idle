@@ -2,7 +2,7 @@
 header("Content-Type: application/json; charset=utf-8");
 
 session_start();
-if (empty($_SESSION["userId"])) {
+if (empty($_SESSION["user_id"])) {
     http_response_code(401);
     echo json_encode(["error" => "unauthorized"]);
     exit;
@@ -11,6 +11,7 @@ if (empty($_SESSION["userId"])) {
 require __DIR__ . "/connection.php";
 
 $stmt = $pdo->prepare("SELECT gameStateJson FROM saves WHERE userId = ? ORDER BY saveId DESC LIMIT 1");
+$stmt->execute([(int)$_SESSION["user_id"]]);
 $row = $stmt->fetch();
 
 // Gespeicherten JSON Text zurückgeben 

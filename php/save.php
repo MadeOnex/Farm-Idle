@@ -2,7 +2,7 @@
 header("Content-Type: application/json; charset=utf-8");
 
 session_start();
-if (empty($_SESSION["userId"])) {
+if (empty($_SESSION["user_id"])) {
     http_response_code(401);
     echo json_encode(["ok" => false, "error" => "unauthorized"]);
     exit;
@@ -27,8 +27,8 @@ if (!isset($data['inventory']) || !is_array($data['inventory'])) {
 
 $json = json_encode($data, JSON_UNESCAPED_UNICODE);
 
-$stmt = $pdo->prepare("INSERT INTO saves (userId, gameStateJson, timestamp) VALUES (?, ?, CURTIME()");
-$stmt->execute([(int)$_SESSION["userId"], $json]);
+$stmt = $pdo->prepare("INSERT INTO saves (userId, gameStateJson, timestamp) VALUES (?, ?, CURTIME())");
+$stmt->execute([(int)$_SESSION["user_id"], $json]);
 
 echo json_encode(["ok" => true]);
 
