@@ -1,10 +1,12 @@
 <?php
+require __DIR__ . "/php/connection.php";
+
 session_start();
 if (empty($_SESSION["username"])) {
     setcookie("flash_text", "Bitte zuerst einloggen", time() + 30, "/");
     setcookie("flash_ok", "0", time() + 30, "/");
     setcookie("flash_tab", "login", time() + 30, "/");
-    header("Location: ../login.html");
+    header("Location: ./login.html");
     exit;
 }
 $username = htmlspecialchars($_SESSION["username"] ?? "User");
@@ -21,6 +23,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
     <link rel="stylesheet" href="./style/style.css">
 
     <script defer src="./js/config.js"></script>
+    <script defer src="./js/storage.js"></script>
     <script defer src="./js/base.js"></script>
     <script defer src="./js/inventory.js"></script>
 </head>
@@ -49,7 +52,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                             id="hud-inventory">0</b></span>
                 </div>
                 <div class="hud">
-                    <span class="user"> <?= $username ?> </span>
+                    <span class="user" id="hud-user" data-username="<?= $username ?>"> <?= $username ?> </span>
                     <button type="button" class="btn btn-ghost" id="btn-save"><b>Speichern</b></button>
                     <a href="./php/logout.php" class="btn btn-ghost"><b>Logout</b></a>
                 </div>
