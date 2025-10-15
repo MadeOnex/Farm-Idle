@@ -26,6 +26,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
     <script defer src="./js/config.js"></script>
     <script defer src="./js/storage.js"></script>
     <script defer src="./js/base.js"></script>
+    <script defer src="./js/game.js"></script>
     <script defer src="./js/inventory.js"></script>
 </head>
 
@@ -35,13 +36,13 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
         <aside class="sidebar">
             <strong>Farm Idle</strong>
             <ul class="nav">
-                <li><a href="#tab-farm" data-tab="tab-farm" id="nav-farm" class="active"><img class="icon"
+                <li><a href="#" data-tab="tab-farm" class="active"><img class="icon"
                             src="./img/svg/building-cottage.svg" alt="Farm" />Farm</a></li>
-                <li><a href="#tab-process" data-tab="tab-process" id="nav-process"><img class="icon" src="./img/svg/settings.svg"
+                <li><a href="#" data-tab="tab-process"><img class="icon" src="./img/svg/settings.svg"
                             alt="Verarbeitung" />Verarbeitung</a></li>
-                <li><a href="#tab-markt" data-tab="tab-markt" id="nav-markt"><img class="icon" src="./img/svg/building-store.svg"
+                <li><a href="#" data-tab="tab-markt"><img class="icon" src="./img/svg/building-store.svg"
                             alt="Markt" />Markt</a></li>
-                <li><a href="#tab-inventory" data-tab="tab-inventory" id="nav-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
+                <li><a href="#" data-tab="tab-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
                             alt="Inventory" />Inventory</a></li>
             </ul>
         </aside>
