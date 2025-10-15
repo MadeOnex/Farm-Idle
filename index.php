@@ -21,6 +21,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
     <title>Farm-Idle</title>
 
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" href="data:,">
 
     <script defer src="./js/config.js"></script>
     <script defer src="./js/storage.js"></script>
@@ -60,6 +61,17 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
             </header>
 
             <main>
+                <!-- Inventory Template direkt am Anfang -->
+
+                <template id="tpl-inventory-item">
+                    <article class="card" data-item-id="">
+                        <h3 class="item-title" data-ref="itemName">Item</h3>
+                        <div class="row">
+                            <img class="icon" data-ref="icon" alt="" />
+                            <span>Bestand: <b class="stock" data-ref="stock">0</b></span>
+                        </div>
+                    </article>
+                </template>
 
                 <!-- Farm-Tab -->
                 <section id="tab-farm" data-tab="tab-farm" class="is-active">
@@ -289,15 +301,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                     <div id="inv-list" class="grid">
 
                         <!-- Template -->
-                        <template id="tpl-inventory-item">
-                            <article class="card" data-item-id="">
-                                <h3 class="item-title" data-ref="itemName">Item</h3>
-                                <div class="row">
-                                    <img class="icon" data-ref="icon" alt="" />
-                                    <span>Bestand: <b class="stock" data-ref="stock">0</b></span>
-                                </div>
-                            </article>
-                        </template>
+
 
                     </div>
 

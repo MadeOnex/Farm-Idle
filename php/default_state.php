@@ -4,7 +4,12 @@ return [
     'gold' => 0,
     'inventory' => [
         'wheat' => 0,
-        'corn'  => 0,
-        'soy'   => 0,
+        'corn' => 0,
+        'soy' => 0,
+        'flour' => 0,
+        'popcorn' => 0,
+        'oil' => 0
     ],
+    'fields' => [null],
+    'jobs' => []
 ];

@@ -72,62 +72,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Storage
-// Speichern/Laden kapseln
-const Storage = {
-  KEY: "save",
+// Globaler Spielstand - hier werden alle Spieldaten gespeichert
+window.state = structuredClone(CONFIG.DEFAULT_STATE);
 
-  load() {
-    // Holt den Stand oder DEFAULT
-    const raw = localStorage.getItem(this.KEY);
-    if (!raw) return structuredClone(DEFAULT_STATE);
-
+// Wenn die Seite geladen ist, führe diese Funktionen aus
+document.addEventListener("DOMContentLoaded", async () => {
     try {
-      return JSON.parse(raw);
-    } catch {
-      return structuredClone(DEFAULT_STATE);
+        // Prüfe ob Templates verfügbar sind
+        const inventoryTemplate = document.getElementById("tpl-inventory-item");
+        if (!inventoryTemplate) {
+            console.error("Inventory Template nicht gefunden!");
+        }
+
+        // Lade den Spielstand
+        const loadedState = await Storage.loadGameState();
+        window.state = loadedState;
+        
+        // UI aktualisieren
+        updateHUD();
+        renderInventory();
+    } catch (err) {
+        console.error("Fehler beim Laden:", err);
     }
-  },
+});
 
-  saved(state) {
-    localStorage.setItem(this.KEY, JSON.stringify(state));
-  },
-};
-
-// Globaler spielstand
-let state = Storage.load();
-
-// HUD Befüllen
-function updateHUD() {
-  const goldEl = document.querySelector("#hud-gold");
-  const inventoryEl = document.querySelector("#hud-inventory");
-  let totalItems = 0;
-
-  // Schaue im inventar wenn kein wert nehme 0
-  for (const amount of Object.values(state.inventory)) {
-    totalItems += amount || 0;
-  }
-
-  if (goldEl) {
-    goldEl.textContent = Math.floor(state.gold);
-  }
-
-  if (inventoryEl) {
-    inventoryEl.textContent = totalItems;
-  }
+// Einfache Funktion zum Neuladen der Seite
+function reloadPage() {
+    window.location.reload();
 }
 
-document.addEventListener("DOMContentLoaded", updateHUD);
+// Wenn der Speichern-Button geklickt wird
+document.getElementById("btn-save")?.addEventListener("click", async () => {
+    if (!window.state) return;
+    
+    // Speichere in Datenbank und lade neu
+    const success = await Storage.saveGameState(window.state);
+    if (success) {
+        reloadPage();
+    }
+});
 
-// Testing Debug
+// Aktualisiert die Anzeige oben (Gold und Inventar)
+function updateHUD() {
+    if (!window.state) return;
 
-// Game.state // Game.save() // console.log(Game.snapshot())
+    const goldEl = document.querySelector("#hud-gold");
+    const inventoryEl = document.querySelector("#hud-inventory");
+    
+    // Zähle alle Items im Inventar
+    let totalItems = 0;
+    Object.values(window.state.inventory).forEach(amount => {
+        totalItems += Number(amount) || 0;
+    });
+
+    // Aktualisiere die Anzeige
+    if (goldEl) goldEl.textContent = Math.floor(window.state.gold);
+    if (inventoryEl) inventoryEl.textContent = totalItems;
+}
+
+// Spielfunktionen die überall verfügbar sind
 window.Game = {
-  state,
-  save() {
-    Storage.save(state);
-  },
-  snapshot() {
-    return JSON.stringify(state, null, 2);
-  },
+    // Fügt Items zum Inventar hinzu
+    addItem(itemId, amount) {
+        if (!window.state.inventory[itemId]) {
+            window.state.inventory[itemId] = 0;
+        }
+        window.state.inventory[itemId] += Number(amount);
+        
+        // Speichern und Seite neu laden
+        Storage.saveGameState(window.state).then(() => {
+            reloadPage();
+        });
+    },
+
+    // Fügt Gold hinzu
+    addGold(amount) {
+        window.state.gold += Number(amount);
+        
+        // Speichern und Seite neu laden
+        Storage.saveGameState(window.state).then(() => {
+            reloadPage();
+        });
+    },
+
+    // Speichert den Spielstand
+    async save() {
+        const success = await Storage.saveGameState(window.state);
+        if (success) {
+            reloadPage();
+        }
+        return success;
+    }
 };
