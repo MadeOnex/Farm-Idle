@@ -1,72 +1,56 @@
-// Tab System
+// Tab System und Navigation
 function showTab(tabId) {
-    // Alle Tabs ausblenden
-    const sections = document.querySelectorAll("section[data-tab]");
-    sections.forEach(section => {
-        section.classList.add('hidden');
-        section.classList.remove('is-active');
+    // Alle Tabs und Nav-Items zurücksetzen
+    document.querySelectorAll("section[data-tab]").forEach(tab => {
+        tab.classList.add('hidden');
+        tab.classList.remove('is-active');
+    });
+    
+    document.querySelectorAll(".nav a[data-tab]").forEach(nav => {
+        nav.classList.remove('active');
     });
 
-    // Gewählten Tab anzeigen
-    const target = document.querySelector(`section[data-tab="${tabId}"]`);
-    if (target) {
-        target.classList.remove('hidden');
-        target.classList.add('is-active');
+    // Aktiven Tab und Nav-Item setzen
+    const targetTab = document.querySelector(`section[data-tab="${tabId}"]`);
+    const targetNav = document.querySelector(`.nav a[data-tab="${tabId}"]`);
+    
+    if (targetTab) {
+        targetTab.classList.remove('hidden');
+        targetTab.classList.add('is-active');
+    }
+    
+    if (targetNav) {
+        targetNav.classList.add('active');
     }
 }
 
-// Navigation Setup
+// Setup
 function setupNavigation() {
-    const navItems = document.querySelectorAll(".nav a[data-tab]");
-    
-    navItems.forEach(item => {
+    // Click Handler für Nav-Items
+    document.querySelectorAll(".nav a[data-tab]").forEach(item => {
         item.addEventListener("click", (e) => {
             e.preventDefault();
-            
-            // Aktive Klasse setzen
-            navItems.forEach(nav => nav.classList.remove("active"));
-            item.classList.add("active");
-            
-            // Tab anzeigen
             showTab(item.dataset.tab);
         });
     });
 
-    // Start-Tab festlegen
-    const startTab = location.hash.slice(1) || "tab-farm";
-    const startNav = document.querySelector(`[data-tab="${startTab}"]`);
-    
-    if (startNav) {
-        startNav.classList.add("active");
-        showTab(startTab);
-    }
-}
-
-// Toolbar Setup
-function setupToolbar() {
-    const toolbars = document.querySelectorAll(".toolbar");
-    
-    toolbars.forEach(toolbar => {
-        const buttons = toolbar.querySelectorAll("button");
-        
-        buttons.forEach(button => {
+    // Toolbar Button Handler
+    document.querySelectorAll(".toolbar").forEach(toolbar => {
+        toolbar.querySelectorAll("button").forEach(button => {
             button.addEventListener("click", () => {
-                buttons.forEach(btn => btn.classList.remove("active"));
+                toolbar.querySelectorAll("button").forEach(b => b.classList.remove("active"));
                 button.classList.add("active");
             });
         });
     });
+
+    // Start mit Default-Tab
+    const startTab = location.hash.slice(1) || "tab-farm";
+    showTab(startTab);
 }
 
 // Initialisierung
-document.addEventListener("DOMContentLoaded", () => {
-    setupNavigation();
-    setupToolbar();
-});
+document.addEventListener("DOMContentLoaded", setupNavigation);
 
-// Global verfügbar machen
-window.UI = {
-    showTab,
-    setupNavigation,
-    setupToolbar
-};
+// Exports (falls nötig)
+window.UI = { showTab };
