@@ -28,6 +28,8 @@ $username = htmlspecialchars($_SESSION["username"]);
     <script defer src="./js/base.js"></script>
     <script defer src="./js/game.js"></script>
     <script defer src="./js/inventory.js"></script>
+    <script defer src="./js/farm.js"></script>
+
 </head>
 
 <body>
@@ -62,8 +64,7 @@ $username = htmlspecialchars($_SESSION["username"]);
             </header>
 
             <main>
-                <!-- Inventory Template direkt am Anfang -->
-
+                <!-- Inventory Template -->
                 <template id="tpl-inventory-item">
                     <article class="card" data-item-id="">
                         <h3 class="item-title" data-ref="itemName">Item</h3>
@@ -74,11 +75,28 @@ $username = htmlspecialchars($_SESSION["username"]);
                     </article>
                 </template>
 
+                <!-- Template für Felder -->
+                <template id="tpl-field">
+                    <article class="card" data-field-id="">
+                        <h3 data-ref="title">Field #X</h3>
+                        <p class="muted" data-ref="status">Status</p>
+                        <div class="row">
+                            <img class="icon" data-ref="cropIcon" alt="" />
+                            <span data-ref="cropName">Crop</span>
+                        </div>
+                        <div class="row muted" data-ref="stats">—</div>
+                        <div class="progress" data-value="0"></div>
+                        <button class="btn" data-action="sow">Säen</button>
+                    </article>
+                </template>
+
+
+
                 <!-- Farm-Tab -->
                 <section id="tab-farm" data-tab="tab-farm" class="is-active">
                     <h2 class="tab-title">Farm</h2>
 
-                    <!-- Saat -->
+                    <!-- Saat Tab -->
                     <nav class="toolbar">
                         <button type="button" class="btn btn-ghost"><img class="icon"
                                 src="./img/Crops/Farming-Wheat.png" alt="Weizen" /><b>Weizen</b></button>
@@ -89,52 +107,8 @@ $username = htmlspecialchars($_SESSION["username"]);
                     </nav>
 
                     <!-- Felder Card -->
-                    <div class="grid">
-                        <article class="card">
-                            <h3>Field #1</h3>
-                            <p class="muted">Status</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
-                            </div>
-                            <div class="row muted">Statrow</div>
-                            <div class="progress" data-value="40"></div>
-                            <button class="btn">Säen</button>
-                        </article>
+                    <div id="field-list" class="grid"> </div>
 
-                        <article class="card">
-                            <h3>Field #2</h3>
-                            <p class="muted">Status</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
-                            </div>
-                            <div class="row muted">Statrow</div>
-                            <div class="progress" data-value="10"></div>
-                            <button class="btn">Säen</button>
-                        </article>
-
-                        <article class="card">
-                            <h3>Field #3</h3>
-                            <p class="muted">Status</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />Weizen
-                            </div>
-                            <div class="row muted">Statrow</div>
-                            <div class="progress" data-value="0"></div>
-                            <button class="btn">Säen</button>
-                        </article>
-
-                        <!-- Template -->
-                        <template id="tpl-field">
-                            <article class="card" data-field-id="">
-                                <h3 data-ref="title">Field #X</h3>
-                                <p class="muted" data-ref="status">Status</p>
-                                <div class="row">
-                                    <img class="icon" data-ref="cropIcon" alt="" />
-                                    <span data-ref="cropName">Crop</span>
-                                </div>
-                                <div class="row muted" data-ref="stats">—</div>
-                                <div class="progress" data-value="0"></div>
-                                <button class="btn" data-action="sow">Säen</button>
-                            </article>
-                        </template>
-                    </div>
                 </section>
 
                 <!-- Verarbeitung -->
