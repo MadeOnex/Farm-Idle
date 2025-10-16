@@ -1,35 +1,49 @@
 const Storage = {
-    // Lädt Spielstand aus der Datenbank
-    async loadGameState() {
-        try {
-            const response = await fetch("./php/load_save.php");
-            if (!response.ok) throw new Error("Load failed");
-            const data = await response.json();
-            return data || structuredClone(CONFIG.DEFAULT_STATE);
-        } catch (err) {
-            console.error("Ladefehler:", err);
-            return structuredClone(CONFIG.DEFAULT_STATE);
-        }
-    },
+  // Spielstand laden
+  loadGameState: async function () {
+    try {
+      const response = await fetch("./php/load_save.php");
 
-    // Speichert Spielstand in der Datenbank
-    async saveGameState(state) {
-        try {
-            const response = await fetch("./php/save.php", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(state)
-            });
-            
-            if (!response.ok) throw new Error("Speichern fehlgeschlagen");
-            return true;
-        } catch (err) {
-            console.error("Speicherfehler:", err);
-            return false;
-        }
+      if (!response.ok) {
+        console.error("Laden fehlgeschlagen");
+        return this.getDefaultState();
+      }
+
+      // Wandle in JSON um
+      const data = await response.json();
+
+      return data || this.getDefaultState();
+    } catch (error) {
+      console.error("Fehler beim Laden:", error);
+      return this.getDefaultState();
     }
+  },
+
+  // Spielstand speichern
+  saveGameState: async function (gameState) {
+    try {
+      const response = await fetch("./php/save.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(gameState),
+      });
+
+      if (!response.ok) {
+        console.error("Speichern fehlgeschlagen");
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error("Fehler beim Speichern:", error);
+      return false;
+    }
+  },
+
+  // Hilfsfunktion für Standardwerte
+  getDefaultState: function () {
+    return structuredClone(CONFIG.DEFAULT_STATE);
+  },
 };
 
-// Mache Storage überall verfügbar
 window.Storage = Storage;
-
