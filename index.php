@@ -299,12 +299,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
                     <h2 class="tab-title">Inventory</h2>
 
                     <!-- Inventar Card -->
-                    <div id="inv-list" class="grid">
-
-                        <!-- Template -->
-
-
-                    </div>
+                    <div id="inv-list" class="grid"> </div>
 
 
                 </section>

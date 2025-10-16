@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Storage.loadGameState().then(loadedState => {
         state = loadedState;
         renderInventory();
-        updateHUD();
+        updateDisplay();
     });
 });
 
