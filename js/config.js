@@ -44,13 +44,13 @@ const CONFIG = {
     popcorn: { in: { corn: 2 }, out: { popcorn: 1 }, time: 45000 },
     oil: { in: { soy: 2 }, out: { oil: 1 }, time: 60000 },
   },
- DEFAULT_STATE: {
+  DEFAULT_STATE: {
     version: 1,
     gold: 0,
-    inventory: {wheat: 0, corn: 0, soy: 0, flour: 0, popcorn: 0, oil: 0},
+    inventory: { wheat: 0, corn: 0, soy: 0, flour: 0, popcorn: 0, oil: 0 },
     fields: [null],
-    jobs: []
-}
+    jobs: [],
+  },
 };
 
 const { ITEMS, CROPS, RECIPES, DEFAULT_STATE } = CONFIG;

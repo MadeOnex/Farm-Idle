@@ -1,111 +1,45 @@
-// Inventar-Tab-Logik
-
-// Rendert das Inventar-Grid aus dem Aktuellen Stand
-// Annahmen
-// - state.inventory ist ein Objekt: key -> Menge
-// - config.items enthält für jeden key {name, icon}
-// Verhalten
-// Sicherheit bei Unbekannten Keys Überspringen
-// - DOM wird neu Aufgebaut
-
-// State Management für Inventory
-function renderInventoryItem(container, itemId, amount) {
-    const item = CONFIG.ITEMS[itemId];
-    if (!item) return;
-
-    const tpl = document.getElementById("tpl-inventory-item");
-    if (!tpl) return;
-
-    const clone = tpl.content.cloneNode(true);
-    const card = clone.querySelector(".card");
-    
-    // HTML Struktur für Inventory Item
-    card.innerHTML = `
-        <h3>${item.name}</h3>
-        <div class="row">
-            <img class="icon" src="${item.icon}" alt="${item.name}">
-            <span>Bestand: <b>${amount || 0}</b></span>
-        </div>
-    `;
-    
-    card.dataset.itemId = itemId;
-    container.appendChild(card);
-}
+// Inventarverwaltung
 
 // Funktion zum Anzeigen des Inventars
 function renderInventory() {
-    // Debug-Ausgaben hinzufügen
-    console.log("Rendering inventory...");
-    
-    // Hole wichtige HTML Elemente
-    const container = document.getElementById("inv-list");
-    if (!container) {
-        console.error("Container #inv-list nicht gefunden!");
-        return;
-    }
+  // Container für Items finden
+  const container = document.getElementById("inv-list");
+  if (!container) return;
 
-    const template = document.getElementById("tpl-inventory-item");
-    if (!template) {
-        console.error("Template #tpl-inventory-item nicht gefunden!");
-        // Debug: Alle verfügbaren Templates anzeigen
-        const templates = document.querySelectorAll('template');
-        console.log("Verfügbare Templates:", templates);
-        return;
-    }
+  // Template für Items finden
+  const template = document.getElementById("tpl-inventory-item");
+  if (!template) return;
 
-    if (!window.state) {
-        console.error("State nicht verfügbar!");
-        return;
-    }
+  container.innerHTML = "";
 
-    // Lösche alte Anzeige
-    container.innerHTML = "";
+  // Für jedes mögliche Item
+  for (const [itemId, item] of Object.entries(CONFIG.ITEMS)) {
+    // Menge aus Spielstand holen
+    const amount = window.state?.inventory[itemId] || 0;
 
-    // Gehe durch alle möglichen Items
-    Object.entries(CONFIG.ITEMS).forEach(([itemId, item]) => {
-        // Hole Anzahl aus Spielstand
-        const amount = window.state.inventory[itemId] || 0;
+    // Neue Karte erstellen
+    const card = template.content.cloneNode(true);
 
-        // Erstelle neue Item-Karte
-        const clone = template.content.cloneNode(true);
-        
-        // Fülle die Karte mit Daten
-        const card = clone.querySelector(".card");
-        const title = clone.querySelector("[data-ref='itemName']");
-        const icon = clone.querySelector("[data-ref='icon']");
-        const stock = clone.querySelector("[data-ref='stock']");
+    // Daten einfügen
+    card.querySelector(".card").dataset.itemId = itemId;
+    card.querySelector("[data-ref='itemName']").textContent = item.name;
+    card.querySelector("[data-ref='icon']").src = item.icon;
+    card.querySelector("[data-ref='stock']").textContent = amount;
 
-        card.dataset.itemId = itemId;
-        title.textContent = item.name;
-        icon.src = item.icon;
-        icon.alt = item.name;
-        stock.textContent = amount;
-
-        // Füge Karte zum Container hinzu
-        container.appendChild(clone);
-    });
+    container.appendChild(card);
+  }
 }
 
-// Funktion zum Aktualisieren eines einzelnen Items
-function updateInventoryItem(itemId, amount) {
-    if (!state) return;
-    state.inventory[itemId] = amount;
-    renderInventory();
-    updateHUD();
+// Item-Menge ändern
+function updateItem(itemId, amount) {
+  // Spielstand aktualisieren
+  if (!window.state?.inventory) return;
+  window.state.inventory[itemId] = amount;
+
+  // Anzeige aktualisieren
+  renderInventory();
+  updateDisplay();
 }
 
-// Initial rendern und bei Änderungen
-document.addEventListener("DOMContentLoaded", () => {
-    // Warte auf das Laden der Daten
-    Storage.loadGameState().then(loadedState => {
-        state = loadedState;
-        renderInventory();
-        updateDisplay();
-    });
-});
-
-// Funktionen global verfügbar machen
-window.Inventory = {
-    render: renderInventory,
-    update: updateInventoryItem
-};
+document.addEventListener("DOMContentLoaded", renderInventory);
+window.Inventory = { render: renderInventory, update: updateItem };
