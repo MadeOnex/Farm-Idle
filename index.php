@@ -2,6 +2,7 @@
 require __DIR__ . "/php/connection.php";
 
 session_start();
+
 if (empty($_SESSION["username"])) {
     setcookie("flash_text", "Bitte zuerst einloggen", time() + 30, "/");
     setcookie("flash_ok", "0", time() + 30, "/");
@@ -9,7 +10,7 @@ if (empty($_SESSION["username"])) {
     header("Location: ./login.html");
     exit;
 }
-$username = htmlspecialchars($_SESSION["username"] ?? "User");
+$username = htmlspecialchars($_SESSION["username"]);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@ $username = htmlspecialchars($_SESSION["username"] ?? "User");
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farm-Idle</title>
+    <title>Farm-Idle <?= $username ?></title>
 
     <link rel="stylesheet" href="./style/style.css">
     <link rel="icon" href="data:,">

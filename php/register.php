@@ -1,46 +1,40 @@
 <?php
 require __DIR__ . '/connection.php';
+require __DIR__ . '/helpers.php';
 
-function flash_redirect(string $path, string $text, bool $ok, string $tab)
-{
-    setcookie("flash_text", $text, time() + 30, "/");
-    setcookie("flash_ok", $ok ? "1" : "0", time() + 30, "/");
-    setcookie("flash_tab", $tab, time() + 30, "/");
-    header("Location: $path");
-    exit;
-}
+$username = trim($_POST["username"] ?? "");
+$pass1 = $_POST["password"] ?? "";
+$pass2 = $_POST["password2"] ?? "";
 
-$username = trim($_POST["username"]);
-$pass1 = $_POST["password"];
-$pass2 = $_POST["password2"];
-
-// IF Abfragen
+// Validierung
 if ($pass1 !== $pass2) {
-    flash_redirect("../login.html", "Passwörter stimmen nicht überein.", false, "register");
+    flash_redirect("../login.html", "Passwörter stimmen nicht überein", false, "register");
 }
 if (strlen($pass1) < 4) {
     flash_redirect("../login.html", "Passwort mind. 4 Zeichen", false, "register");
 }
-
-// Username Unique
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
-$stmt->execute([$username]);
-if ($stmt->fetch()) {
-    flash_redirect("../login.html", "Username ist bereits vergeben", false, "register");
+if (strlen($username) < 3) {
+    flash_redirect("../login.html", "Username mind. 3 Zeichen", false, "register");
 }
 
-// DB Speichern
+// Username prüfen
+$stmt = $pdo->prepare("SELECT userId FROM users WHERE username = ?");
+$stmt->execute([$username]);
+if ($stmt->fetch()) {
+    flash_redirect("../login.html", "Username vergeben", false, "register");
+}
+
+// User anlegen
 $hash = password_hash($pass1, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
 $stmt->execute([$username, $hash]);
 
-// Default save anlegen
+// Default-Spielstand anlegen
 $userId = (int)$pdo->lastInsertId();
-
 $default = require __DIR__ . "/default_state.php";
-$json = json_encode($default, JSON_UNESCAPED_UNICODE);
+$json = json_encode($default);
 
-$stmt = $pdo->prepare("INSERT INTO saves (userId, gameStateJson, `timestamp`) VALUES (?, ?, CURTIME())");
+$stmt = $pdo->prepare("INSERT INTO saves (userId, gameStateJson, timestamp) VALUES (?, ?, NOW())");
 $stmt->execute([$userId, $json]);
 
-flash_redirect("../login.html", "Registrierung erfolgreich. Bitte einlogen", true, "login");
+flash_redirect("../login.html", "Registrierung erfolgreich", true, "login");

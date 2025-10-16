@@ -1,30 +1,24 @@
 <?php
 session_start();
 require __DIR__ . "/connection.php";
+require __DIR__ . "/helpers.php";
 
-function flash_redirect(string $path, string $text, bool $ok, string $tab)
-{
-  setcookie("flash_text", $text, time() + 30, "/");
-  setcookie("flash_ok", $ok ? "1" : "0", time() + 30, "/");
-  setcookie("flash_tab", $tab, time() + 30, "/");
-  header("Location: $path");
-  exit;
-}
+$username = trim($_POST["login"] ?? "");
+$password = $_POST["password"] ?? "";
 
-$login = trim($_POST["login"]);
-$pass = $_POST["password"];
-
-
-$stmt = $pdo->prepare("SELECT userId AS user_id, username, password FROM users WHERE username = ? LIMIT 1");
-$stmt->execute([$login]);
+// User suchen
+$stmt = $pdo->prepare("SELECT userId, username, password FROM users WHERE username = ?");
+$stmt->execute([$username]);
 $user = $stmt->fetch();
 
-if (!$user || !password_verify($pass, $user["password"])) {
-  flash_redirect("../login.html", "Username oder Password falsch", false, "login");
+// Prüfen
+if (!$user || !password_verify($password, $user["password"])) {
+    flash_redirect("../login.html", "Falscher Username/Passwort", false, "login");
 }
 
+// Session setzen
 session_regenerate_id(true);
-$_SESSION["user_id"] = (int)$user["user_id"];
+$_SESSION["user_id"] = (int)$user["userId"];
 $_SESSION["username"] = $user["username"];
 
 header("Location: ../index.php");

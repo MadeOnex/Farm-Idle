@@ -1,17 +1,17 @@
 <?php
+// Datenbank-Verbindung
 $host = "mysql";
-$user = "root";
+$user =  "root";
 $password = "1234";
 $dbname = "2351_Farmidle";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // echo "Verbindung erfolgreich!";
-
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+        $user,
+        $password,
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
 } catch (PDOException $e) {
-    // echo "Verbindung fehlgeschlagen: " . $e->getMessage();
+    die("DB-Fehler: " . $e->getMessage());
 }
-
