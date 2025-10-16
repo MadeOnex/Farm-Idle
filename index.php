@@ -1,15 +1,14 @@
 <?php
 require __DIR__ . "/php/connection.php";
+require __DIR__ . "/php/helpers.php";
 
 session_start();
 
+// Session Check
 if (empty($_SESSION["username"])) {
-    setcookie("flash_text", "Bitte zuerst einloggen", time() + 30, "/");
-    setcookie("flash_ok", "0", time() + 30, "/");
-    setcookie("flash_tab", "login", time() + 30, "/");
-    header("Location: ./login.html");
-    exit;
+    flash_redirect("./login.html", "Bitte zuerst einloggen", false, "login");
 }
+
 $username = htmlspecialchars($_SESSION["username"]);
 ?>
 
