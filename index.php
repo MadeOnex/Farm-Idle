@@ -58,7 +58,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                 <div class="hud">
                     <span class="user" id="hud-user" data-username="<?= $username ?>"> <?= $username ?> </span>
                     <button type="button" class="btn btn-ghost" id="btn-save"><b>Speichern</b></button>
-                    <a href="./php/logout.php" class="btn btn-ghost"><b>Logout</b></a>
+                    <button type="button" class="btn btn-ghost" onclick="location.href='./php/logout.php'"><b>Logout</b></button>
                 </div>
 
             </header>
