@@ -40,7 +40,7 @@ const CONFIG = {
     },
   },
   RECIPES: {
-    flour: { in: { wheat: 2 }, out: { flour: 2 }, time: 30000 },
+    flour: { in: { wheat: 2 }, out: { flour: 1 }, time: 30000 },
     popcorn: { in: { corn: 2 }, out: { popcorn: 1 }, time: 45000 },
     oil: { in: { soy: 2 }, out: { oil: 1 }, time: 60000 },
   },
