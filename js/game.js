@@ -37,6 +37,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (loadedState) {
       window.state = loadedState;
       updateDisplay();
+
+      // Farm rendern falls vorhanden
+      if (typeof renderFields === "function") {
+        renderFields();
+      }
     }
   } catch (err) {
     console.error("Fehler beim Laden:", err);

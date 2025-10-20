@@ -10,6 +10,6 @@ return [
         'popcorn' => 0,
         'oil' => 0
     ],
-    'fields' => [null],
+    'fields' => [null, null],
     'jobs' => []
 ];

@@ -81,10 +81,10 @@ $username = htmlspecialchars($_SESSION["username"]);
                         <h3 data-ref="title">Field #X</h3>
                         <p class="muted" data-ref="status">Status</p>
                         <div class="row">
-                            <img class="icon" data-ref="cropIcon" alt="" />
-                            <span data-ref="cropName">Crop</span>
+                            <img class="icon" data-ref="cropIcon" src="./img/svg/field.svg" alt="" />
+                            <span data-ref="cropName">Saat</span>
                         </div>
-                        <div class="row muted" data-ref="stats">—</div>
+                        <div class="row muted" data-ref="stats">Benötigte Zeit</div>
                         <div class="progress" data-value="0"></div>
                         <button class="btn" data-action="sow">Säen</button>
                     </article>
@@ -98,12 +98,17 @@ $username = htmlspecialchars($_SESSION["username"]);
 
                     <!-- Saat Tab -->
                     <nav class="toolbar">
-                        <button type="button" class="btn btn-ghost"><img class="icon"
-                                src="./img/Crops/Farming-Wheat.png" alt="Weizen" /><b>Weizen</b></button>
-                        <button type="button" class="btn btn-ghost"><img class="icon"
-                                src="./img/Crops/Vegetables-Cornpng.png" alt="Mais" /><b>Mais</b></button>
-                        <button type="button" class="btn btn-ghost"><img class="icon"
-                                src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" /><b>Soja</b></button>
+                        <button type="button" class="btn btn-ghost" data-crop="wheat">
+                            <img class="icon" src="./img/Crops/Farming-Wheat.png" alt="Weizen" />
+                            <b>Weizen</b></button>
+                        <button type="button" class="btn btn-ghost" data-crop="corn">
+                            <img class="icon" src="./img/Crops/Vegetables-Cornpng.png" alt="Mais" />
+                            <b>Mais</b></button>
+                        <button type="button" class="btn btn-ghost" data-crop="soy">
+                            <img class="icon" src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" />
+                            <b>Soja</b></button>
+                        <button id="btn-buy-field" type="button" class="btn btn-ghost">
+                            <b>Feld Kaufen</b></button>
                     </nav>
 
                     <!-- Felder Card -->
