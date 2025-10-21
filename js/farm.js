@@ -134,7 +134,7 @@ function harvestField(fieldIndex) {
   const yield = CONFIG.CROPS[field.crop].yield;
 
   for (const [itemId, amount] of Object.entries(yield)) {
-    Gamepad.addItem(itemId, amount);
+    Game.addItem(itemId, amount);
   }
 
   window.state.fields[fieldIndex] = null;
