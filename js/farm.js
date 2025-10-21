@@ -19,7 +19,7 @@ function renderFields() {
     const card = fieldTemplate.content.cloneNode(true);
 
     // Titel setzen
-    card.querySelector("[data-ref='title']").textContent = `Field #${i + 1}`;
+    card.querySelector("[data-ref='title']").textContent = `Feld #${i + 1}`;
 
     // Button-Element holen
     const btn = card.querySelector("button");

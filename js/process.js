@@ -1,6 +1,5 @@
 //Process-Tab Verwaltung
 
-let selectedRecipe = null;
 let processInterval = null;
 
 // Recipes anzeigen
@@ -13,9 +12,15 @@ function renderRecipes() {
   container.innerHTML = "";
 
   // Für jedes Rezept
-  for (let i = 0; i < window.state.recipes.length; i++) {
-    const recipe = window.state.fields[i];
+  for (let [recipeId, recipe] of Object.entries(CONFIG.RECIPES)) {
     const card = template.content.cloneNode(true);
+
+    // Input/Output IDs holen
+    const inputId = recipe.inputItem;
+    const outputId = recipe.outputItem;
+    const inputAmount = recipe.inputAmount;
+    const outputAmount = recipe.outputAmount;
+    const timeSec = Math.floor(recipe.time / 1000);
 
     // Daten einfügen
     card.querrySelector("[data-ref='title'").textContent = `Rezept #${i + 1}`;

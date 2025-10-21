@@ -46,7 +46,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                 <li><a href="#" data-tab="tab-markt"><img class="icon" src="./img/svg/building-store.svg"
                             alt="Markt" />Markt</a></li>
                 <li><a href="#" data-tab="tab-inventory"><img class="icon" src="./img/svg/building-warehouse.svg"
-                            alt="Inventory" />Inventory</a></li>
+                            alt="Inventory" />Inventar</a></li>
             </ul>
         </aside>
 
@@ -59,7 +59,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                 <div class="hud">
                     <span class="user" id="hud-user" data-username="<?= $username ?>"> <?= $username ?> </span>
                     <button type="button" class="btn btn-ghost" id="btn-save"><b>Speichern</b></button>
-                    <button type="button" class="btn btn-ghost" onclick="location.href='./php/logout.php'"><b>Logout</b></button>
+                    <button type="button" class="btn btn-ghost" onclick="location.href='./php/logout.php'"><b>Ausloggen</b></button>
                 </div>
 
             </header>
@@ -222,7 +222,7 @@ $username = htmlspecialchars($_SESSION["username"]);
 
                 <!-- Inventar Tab -->
                 <section id="tab-inventory" data-tab="tab-inventory">
-                    <h2 class="tab-title">Inventory</h2>
+                    <h2 class="tab-title">Inventar</h2>
 
                     <!-- Inventar Card -->
                     <div id="inv-list" class="grid"> </div>
