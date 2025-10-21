@@ -105,11 +105,6 @@ function plantField(fieldIndex, cropId) {
     return;
   }
 
-  if (window.state.fields[fieldIndex] !== null) {
-    alert("Feld ist belegt!");
-    return;
-  }
-
   const now = Date.now();
   const growTime = CONFIG.CROPS[cropId].time;
 

@@ -226,6 +226,10 @@ input[type="number"].qty {
     margin-bottom: var(--s-4);
 }
 
+.jobs {
+    margin-top: var(--s-4);
+}
+
 .tab-subtitle {
     margin-bottom: var(--s-2);
     color: var(--muted);

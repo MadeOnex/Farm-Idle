@@ -121,7 +121,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                     <h2 class="tab-title">Verarbeitung</h2>
 
                     <!-- Rezepte Card -->
-                    <div class="grid">
+                    <div id="process-list" class="grid">
                         <article class="card">
                             <h3>Rezept #1</h3>
                             <p class="subtext">Weizen → Mehl (30s)</p>
@@ -185,7 +185,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                     </div>
 
                     <!-- Aktive Jobs -->
-                    <h3 class="tab-title">Aktive Jobs <small>0/3</small></h3>
+                    <h2 class="tab-title jobs">Aktive Jobs <small>0/3</small></h2>
                     <div class="grid">
                         <article class="card">
                             <div class="row"><img class="icon" src="./img/Process/Cake-Flour.png"
