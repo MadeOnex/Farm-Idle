@@ -126,11 +126,6 @@ function plantField(fieldIndex, cropId) {
 // Feld ernten
 function harvestField(fieldIndex) {
   const field = window.state.fields[fieldIndex];
-  if (!field || Date.now() < field.harvestAt) {
-    alert("Noch nicht fertig!");
-    return;
-  }
-
   const yield = CONFIG.CROPS[field.crop].yield;
 
   for (const [itemId, amount] of Object.entries(yield)) {
