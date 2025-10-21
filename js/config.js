@@ -40,9 +40,27 @@ const CONFIG = {
     },
   },
   RECIPES: {
-    flour: { in: { wheat: 2 }, out: { flour: 1 }, time: 30000 },
-    popcorn: { in: { corn: 2 }, out: { popcorn: 1 }, time: 45000 },
-    oil: { in: { soy: 2 }, out: { oil: 1 }, time: 60000 },
+    flour: {
+      id: "flour",
+      name: "Mehl herstellen",
+      input: { wheat: 2 },
+      output: { flour: 1 },
+      time: 10000, // TODO: Zeit anpassen
+    },
+    popcorn: {
+      id: "popcorn",
+      name: "Popcorn herstellen",
+      input: { corn: 2 },
+      output: { popcorn: 1 },
+      time: 10000, // TODO: Zeit anpassen
+    },
+    oil: {
+      id: "oil",
+      name: "Öl herstellen",
+      input: { soja: 2 },
+      output: { oil: 1 },
+      time: 10000, // TODO: Zeit anpassen
+    },
   },
   DEFAULT_STATE: {
     version: 1,
