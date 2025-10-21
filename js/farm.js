@@ -1,6 +1,9 @@
+// Farm-Tab Verwaltung
+
 let selectedCrop = null;
 let updateInterval = null;
 
+// Felder anzeigen
 function renderFields() {
   const fieldsContainer = document.getElementById("field-list");
   const fieldTemplate = document.getElementById("tpl-field");
