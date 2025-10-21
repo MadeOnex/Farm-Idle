@@ -27,3 +27,4 @@ function renderRecipes() {
     card.querrySelector("[data-ref='subtitle'").textContent = "Weizen ";
   }
 }
+    
