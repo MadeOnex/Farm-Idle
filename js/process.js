@@ -19,24 +19,50 @@ function renderRecipes() {
     const card = template.content.cloneNode(true);
 
     // Zutaten und Produkt herausfinden
-    const inputId = Object.keys(recipe.input[0]);
-    const outputId = Object.keys(recipe.output[0]);
+    const inputId = Object.keys(recipe.input)[0];
+    const outputId = Object.keys(recipe.output)[0];
     const inputAmount = recipe.input[inputId];
     const timeSec = Math.floor(recipe.time / 1000);
 
-    // Titel setzen
-    const inputItem = CONFIG.ITEM[inputId];
-    const outputItem = CONFIG.ITEM[outputId];
+    // Titel und Untertitel setzen
+    const outputItem = CONFIG.ITEMS[outputId];
+    const inputItem = CONFIG.ITEMS[inputId];
 
+    // Titel Untertitel setzen
     card.querySelector(
-      "[data-ref='titel']"
+      "[data-ref='title']"
     ).textContent = `${outputItem.name} Herstellen`;
     card.querySelector(
       "[data-ref='subtitle']"
     ).textContent = `${inputItem.name} zu ${outputItem.name} (${timeSec}s)`;
 
-card.querySelector("[data-ref='outIcon']").src = `${outputId.icon}`;
+    // Produkt Icon und Name
+    card.querySelector("[data-ref='outIcon']").src = outputItem.icon;
+    card.querySelector("[data-ref='outIcon']").alt = outputItem.name;
+    card.querySelector("[data-ref='outName']").textContent = outputItem.name;
 
+    // Benötigte Menge (Kosten)
+    card.querySelector("[data-ref='costAmount']").textContent = inputAmount;
+    card.querySelector("[data-ref='costIcon']").src = inputItem.icon;
+    card.querySelector("[data-ref='costIcon']").alt = inputItem.name;
 
+    // Benötigte Menge (Inventar)
+    const available = window.state.inventory[inputId] || 0;
+    card.querySelector("[data-ref='available']").textContent = available;
+    card.querySelector("[data-ref='availIcon']").src = inputItem.icon;
+    card.querySelector("[data-ref='availIcon']").alt = inputItem.name;
+
+    // // Start Button Konfig
+    // const startButton = card.querySelector("button");
+    // const hasEnoughMaterial = canStartRecipe(recipe);
+
+    // // startButton.disabled = !hasEnoughMaterial;
+    // // startButton.onclick = () => startJob(recipeId);
+
+    container.appendChild(card);
   }
 }
+
+// function renderJobs() {}
+
+document.addEventListener("DOMContentLoaded", renderRecipes);

@@ -47,7 +47,7 @@ function setupNavigation() {
   });
 
   // Start mit Default-Tab
-  const startTab = location.hash.slice(1) || "tab-farm";
+  const startTab = location.hash.slice(1) || "tab-farm"; //TODO: Ändern zu Farm
   showTab(startTab);
 }
 
