@@ -57,7 +57,7 @@ const CONFIG = {
     oil: {
       id: "oil",
       name: "Öl herstellen",
-      input: { soja: 2 },
+      input: { soy: 2 },
       output: { oil: 1 },
       time: 10000, // TODO: Zeit anpassen
     },
