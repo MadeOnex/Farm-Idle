@@ -63,6 +63,26 @@ function renderRecipes() {
   }
 }
 
-// function renderJobs() {}
+function renderJobs() {
+  const container = document.querySelector("#job-list");
+  const template = document.querySelector("#tpl-job");
+  // Counter
+
+  if (!container || !template) {
+    console.log("Job-Container oder Template nicht gefunden");
+    return;
+  }
+
+  container.innerHTML = "";
+  let hasRunningJobs = false;
+
+  // Jeden aktiven Job durchgehen
+  for(let job of window.state.jobs) {
+    const recipe = CONFIG.RECIPES[job.recipeId];
+
+    
+  }
+
+}
 
 document.addEventListener("DOMContentLoaded", renderRecipes);
