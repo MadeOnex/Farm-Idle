@@ -35,7 +35,7 @@ function renderRecipes() {
       "[data-ref='subtitle']"
     ).textContent = `${inputItem.name} zu ${outputItem.name} (${timeSec}s)`;
 
-card.querySelector{"[data-ref='outIcon']"}.src = `${outputId.icon}`;
+card.querySelector("[data-ref='outIcon']").src = `${outputId.icon}`;
 
 
   }
