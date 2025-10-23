@@ -53,11 +53,11 @@ function renderRecipes() {
     card.querySelector("[data-ref='availIcon']").alt = inputItem.name;
 
     // // Start Button Konfig
-    // const startButton = card.querySelector("button");
-    // const hasEnoughMaterial = canStartRecipe(recipe);
+    const startButton = card.querySelector("button");
+    const hasEnoughMaterial = canStartRecipe(recipe);
 
-    // // startButton.disabled = !hasEnoughMaterial;
-    // // startButton.onclick = () => startJob(recipeId);
+    startButton.disabled = !hasEnoughMaterial;
+    startButton.onclick = () => startJob(recipeId);
 
     container.appendChild(card);
   }
@@ -66,7 +66,7 @@ function renderRecipes() {
 function renderJobs() {
   const container = document.querySelector("#job-list");
   const template = document.querySelector("#tpl-job");
-  // Counter
+  const counter = document.querySelector(".jobs small");
 
   if (!container || !template) {
     console.log("Job-Container oder Template nicht gefunden");
@@ -77,12 +77,70 @@ function renderJobs() {
   let hasRunningJobs = false;
 
   // Jeden aktiven Job durchgehen
-  for(let job of window.state.jobs) {
+  for (let job of window.state.jobs) {
     const recipe = CONFIG.RECIPES[job.recipeId];
 
-    
+    if (!recipe) {
+      console.error(`${job.recipeId} nicht gefunden`);
+      continue;
+    }
+
+    const outputId = Object.keys(recipe.output)[0];
+    const outputItem = CONFIG.ITEMS[outputId];
+
+    const card = template.content.cloneNode(true);
+
+    // Produkt-Info anzeigen
+    card.querySelector("[data-ref='prodIcon']").src = outputItem.icon;
+    card.querySelector("[data-ref='prodIcon']").alt = outputItem.name;
+    card.querySelector("[data-ref='prodName']").textContent = outputItem.name;
+
+    // Fortschritt berechnen
+    // TODO: Wenn startjob
+
+    // Fortschrittsbalken aktualisieren
+    const progressBar = card.querySelector(".progress");
+    progressBar.style.setProperty(".progress", `${percent}`);
+
+    // Restzeit berechnen und anzeigen
+    // TODO: nach startjob
+
+    // Prüfen ob Job fertig ist
+    // TODO nach startjob
+
+    // Abbrechen-Button konfigurieren
+    const cancelButton = card.querySelector("button");
+    cancelButton.onclick = () => {
+      if (confirm("Job wirklich abbrechen? Material ist verloren!")) {
+        // TODO canceljob
+      }
+    };
+
+    container.appendChild(card);
   }
 
+  if (counter) {
+    counter.textContent = `${window.state.length}/3`;
+  }
+}
+
+function canStartRecipe() {
+  // TODO v2: echtes limit ü Inventar prüfen
+  return true;
+}
+
+function startJob(recipeId) {
+  const recipe = CONFIG.RECIPES[recipeId];
+  if (!recipeId) {
+    console.error(`Rezept ${recipeId} existiert nicht`);
+    return;
+  }
+
+const now = Date.now();
+const newJob = {
+  
+}
+  
 }
 
 document.addEventListener("DOMContentLoaded", renderRecipes);
