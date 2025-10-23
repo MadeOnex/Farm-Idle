@@ -323,6 +323,6 @@ input[type="number"].qty {
     align-items: center;
     background-color: var(--accent-weak);
     border-radius: var(--r);
-    border: 1px solid var(--accent);
+    border: 1px dashed var(--accent);
     padding: .45rem .9rem;
 }
