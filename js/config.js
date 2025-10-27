@@ -45,21 +45,21 @@ const CONFIG = {
       name: "Mehl herstellen",
       input: { wheat: 2 },
       output: { flour: 1 },
-      time: 10000, // TODO: Zeit anpassen
+      time: 30000, 
     },
     popcorn: {
       id: "popcorn",
       name: "Popcorn herstellen",
       input: { corn: 2 },
       output: { popcorn: 1 },
-      time: 10000, // TODO: Zeit anpassen
+      time: 45000, 
     },
     oil: {
       id: "oil",
       name: "Öl herstellen",
       input: { soy: 2 },
       output: { oil: 1 },
-      time: 10000, // TODO: Zeit anpassen
+      time: 60000,
     },
   },
   DEFAULT_STATE: {
