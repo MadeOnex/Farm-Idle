@@ -57,14 +57,8 @@ function renderRecipes() {
 
     // // Start Button Konfig
     const startButton = card.querySelector("button");
-    const hasEnoughMaterial = canStartRecipe(recipe);
 
-    startButton.disabled = !hasEnoughMaterial;
     startButton.onclick = () => startJob(recipeId);
-
-    if (!hasEnoughMaterial) {
-      startButton.title = "nicht genug Material";
-    }
 
     container.appendChild(card);
   }
