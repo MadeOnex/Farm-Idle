@@ -147,7 +147,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                             <img class="icon" src="./img/Crops/Allergens-Soy-Bean.png" alt="Soja" />
                             <b>Soja</b></button>
                         <button id="btn-buy-field" type="button" class="btn btn-ghost">
-                            <b>Feld Kaufen</b></button>
+                            <b>Feld Kaufen 100g</b></button>
                     </nav>
 
                     <!-- Felder Card -->
@@ -218,6 +218,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                             </article>
                         </template>
                     </div>
+                    <h2>In Arbeit</h2>
                 </section>
 
                 <!-- Inventar Tab -->
