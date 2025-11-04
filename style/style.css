@@ -326,3 +326,10 @@ input[type="number"].qty {
     border: 1px dashed var(--accent);
     padding: .45rem .9rem;
 }
+
+.in-work {
+    color: orangered;
+    font-size: 24px;
+    text-align: center;
+    margin: 15px;
+}

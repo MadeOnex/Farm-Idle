@@ -218,7 +218,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                             </article>
                         </template>
                     </div>
-                    <h2>In Arbeit</h2>
+                    <h2 class="in-work">In Arbeit</h2>
                 </section>
 
                 <!-- Inventar Tab -->
