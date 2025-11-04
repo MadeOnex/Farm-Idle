@@ -188,10 +188,10 @@ $username = htmlspecialchars($_SESSION["username"]);
                         </article>
 
                         <article class="card">
-                            <h3 class="item-title">Weizen</h3>
-                            <p class="subtext price">Preis/Stück: 1.20 G</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
-                                    alt="Weizen" /><span>Bestand <b class="stock">12</b></span></div>
+                            <h3 class="item-title">Mais</h3>
+                            <p class="subtext price">Preis/Stück: 2.10 G</p>
+                            <div class="row"><img class="icon" src="./img/Crops/Vegetables-Cornpng.png"
+                                    alt="Weizen" /><span>Bestand <b class="stock">6</b></span></div>
                             <div class="stack">
                                 <label class="row">Menge: <input class="qty" type="number" value="10" min="1"
                                         step="1" /></label>
