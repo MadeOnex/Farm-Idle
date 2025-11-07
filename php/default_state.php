@@ -1,7 +1,7 @@
 <?php
 return [
     'schemaVersion' => 1,
-    'gold' => 0,
+    'gold' => 400,          // Anpassung Präsentation
     'inventory' => [
         'wheat' => 0,
         'corn' => 0,
