@@ -35,7 +35,7 @@ const CONFIG = {
       yield: { corn: 1 },
     },
     soy: {
-      time: 6000,     // Anpassung Präsentation
+      time: 15000,     // Anpassung Präsentation
       yield: { soy: 1 },
     },
   },
@@ -59,7 +59,7 @@ const CONFIG = {
       name: "Öl herstellen",
       input: { soy: 2 },
       output: { oil: 1 },
-      time: 6000,     // Anpassung Präsentation
+      time: 15000,     // Anpassung Präsentation
     },
   },
   DEFAULT_STATE: {
