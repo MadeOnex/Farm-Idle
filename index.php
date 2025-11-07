@@ -57,6 +57,7 @@ $username = htmlspecialchars($_SESSION["username"]);
                 <div class="hud"><span>Gold: <b id="hud-gold">0</b></span><span>Inventar: <b
                             id="hud-inventory">0</b></span>
                 </div>
+                <img src="./img/svg/sprout.png" alt="sproud" width="40px">
                 <div class="hud">
                     <span class="user" id="hud-user" data-username="<?= $username ?>"> <?= $username ?> </span>
                     <button type="button" class="btn btn-ghost" id="btn-save"><b>Speichern</b></button>
