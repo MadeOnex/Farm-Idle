@@ -27,15 +27,15 @@ const CONFIG = {
   },
   CROPS: {
     wheat: {
-      time: 2000,      // Anpassung Präsentation
+      time: 20000,      
       yield: { wheat: 1 },
     },
     corn: {
-      time: 4500,     // Anpassung Präsentation
+      time: 45000,     
       yield: { corn: 1 },
     },
     soy: {
-      time: 15000,     // Anpassung Präsentation
+      time: 600000,     
       yield: { soy: 1 },
     },
   },
@@ -45,21 +45,21 @@ const CONFIG = {
       name: "Mehl herstellen",
       input: { wheat: 2 },
       output: { flour: 1 },
-      time: 3000,     // Anpassung Präsentation
+      time: 45000,     
     },
     popcorn: {
       id: "popcorn",
       name: "Popcorn herstellen",
       input: { corn: 2 },
       output: { popcorn: 1 },
-      time: 4500,     // Anpassung Präsentation
+      time: 60000,     
     },
     oil: {
       id: "oil",
       name: "Öl herstellen",
       input: { soy: 2 },
       output: { oil: 1 },
-      time: 15000,     // Anpassung Präsentation
+      time: 90000,    
     },
   },
   DEFAULT_STATE: {
