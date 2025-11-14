@@ -27,6 +27,7 @@ $username = htmlspecialchars($_SESSION["username"]);
     <script defer src="./js/config.js"></script>
     <script defer src="./js/storage.js"></script>
     <script defer src="./js/process.js"></script>
+    <script defer src="./js/markt.js"></script>
     <script defer src="./js/base.js"></script>
     <script defer src="./js/game.js"></script>
     <script defer src="./js/inventory.js"></script>
@@ -132,6 +133,24 @@ $username = htmlspecialchars($_SESSION["username"]);
                     </article>
                 </template>
 
+                <!-- Template für Markt -->
+                        <template id="tpl-market-item">
+                            <article class="card" data-item-id="">
+                                <h3 class="item-title" data-ref="itemName">Item</h3>
+                                <p class="subtext price">Preis/Stück: <span data-ref="price"></span> G</p>
+                                <div class="row">
+                                    <img class="icon" data-ref="icon" alt="" />
+                                    <span>Bestand <b class="stock" data-ref="stock">0</b></span>
+                                </div>
+                                <div class="stack">
+                                    <label class="row">Menge:
+                                        <input class="qty" type="number" value="1" min="1" step="1" data-ref="qty" />
+                                    </label>
+                                    <button type="button" class="btn" data-action="sell">Verkaufen</button>
+                                </div>
+                            </article>
+                        </template>
+
 
                 <!-- Farm-Tab -->
                 <section id="tab-farm" data-tab="tab-farm" class="is-active">
@@ -173,54 +192,10 @@ $username = htmlspecialchars($_SESSION["username"]);
                 <!-- Markt Tab -->
                 <section id="tab-markt" data-tab="tab-markt" class="hidden">
                     <h2 class="tab-title">Markt</h2>
-                    <h3 class="tab-subtitle">Aktuelle Marktpreise</h3>
+                    <h3 class="tab-subtitle">Aktuelle Marktpreise </h3>
 
                     <!-- Markt Card -->
-                    <div class="grid">
-                        <article class="card">
-                            <h3 class="item-title">Weizen</h3>
-                            <p class="subtext price">Preis/Stück: 1.20 G</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Farming-Wheat.png"
-                                    alt="Weizen" /><span>Bestand <b class="stock">12</b></span></div>
-                            <div class="stack">
-                                <label class="row">Menge: <input class="qty" type="number" value="10" min="1"
-                                        step="1" /></label>
-                                <button type="button" class="btn">Verkaufen</button>
-                            </div>
-                        </article>
-
-                        <article class="card">
-                            <h3 class="item-title">Mais</h3>
-                            <p class="subtext price">Preis/Stück: 2.10 G</p>
-                            <div class="row"><img class="icon" src="./img/Crops/Vegetables-Cornpng.png"
-                                    alt="Weizen" /><span>Bestand <b class="stock">6</b></span></div>
-                            <div class="stack">
-                                <label class="row">Menge: <input class="qty" type="number" value="10" min="1"
-                                        step="1" /></label>
-                                <button type="button" class="btn">Verkaufen</button>
-                            </div>
-                        </article>
-
-                        <!-- Template -->
-                        <template id="tpl-market-item">
-                            <article class="card" data-item-id="">
-                                <h3 class="item-title" data-ref="itemName">Item</h3>
-                                <p class="subtext price">Preis/Stück: <span data-ref="price">0</span> <span
-                                        data-ref="unit">G</span></p>
-                                <div class="row">
-                                    <img class="icon" data-ref="icon" alt="" />
-                                    <span>Bestand <b class="stock" data-ref="stock">0</b></span>
-                                </div>
-                                <div class="stack">
-                                    <label class="row">Menge:
-                                        <input class="qty" type="number" value="1" min="1" step="1" data-ref="qty" />
-                                    </label>
-                                    <button type="button" class="btn" data-action="sell">Verkaufen</button>
-                                </div>
-                            </article>
-                        </template>
-                    </div>
-                    <h2 class="in-work">In Arbeit</h2>
+                    <div class="grid"> </div>
                 </section>
 
                 <!-- Inventar Tab -->
